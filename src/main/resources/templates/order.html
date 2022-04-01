@@ -89,10 +89,19 @@
         font-weight: 400;
       }
 
+      /* td input {
+        border: none;
+      } */
+
+      /* tr + td {
+        text-align: left;
+      } */
+
       select {
         margin: 5px 0px;
         padding: 8px 15px;
       }
+
       .btn-block {
         text-transform: uppercase;
         font-size: 15px !important;
@@ -235,29 +244,17 @@
 
               <h2 class="mt-5 mb-4">Order Details</h2>
               <!-- <table id="order_details"></table> -->
-
-              <div class="row">
-                <div class="form-card col-sm-6">
-                  <label class="form-control-label col-sm-4">Taco Pack</label>
-                  <label class="form-control-label col-sm-4">$20 </label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-card col-sm-6">
-                  <label class="form-control-label col-sm-4"
-                    >Burrito Pack</label
-                  >
-                  <label class="form-control-label col-sm-4">$28 </label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-card col-sm-6">
-                  <label class="form-control-label col-sm-4"
-                    >Enchilada Pack</label
-                  >
-                  <label class="form-control-label col-sm-4">$35 </label>
-                </div>
-              </div>
+              <table id="menu" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
 
               <div class="row justify-content-end mt-5">
                 <div class="form-group col-sm-6">

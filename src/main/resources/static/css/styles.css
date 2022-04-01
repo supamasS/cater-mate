@@ -64,10 +64,6 @@ select:focus {
   outline: none;
 }
 
-td label {
-  text-align: right;
-}
-
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: rgb(189, 189, 189);
@@ -103,4 +99,8 @@ td label {
 #customer_info {
   display: flex;
   flex-direction: row;
+}
+
+td input {
+  border: none;
 }
