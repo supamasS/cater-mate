@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cater Mate: Order Submitted</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&family=Red+Hat+Mono:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/styles.css"
+      th:href="@{/css/styles.css}"
+    />
+  </head>
+  <body>
+    <br />
+    <h1>Cater Mate</h1>
+    <form class="small_form" action="order.html" th:action="@{/order}">
+      <h2>Thank you for your order!</h2>
+      <br />
+
+      <!-- Copied from https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340 -->
+      <div
+        class="tenor-gif-embed"
+        data-postid="17915340"
+        data-share-method="host"
+        data-aspect-ratio="1.66667"
+        data-width="100%"
+      >
+        <a
+          href="https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340"
+          >Mexican Cuisine Mexican Food GIF</a
+        >from
+        <a href="https://tenor.com/search/mexican+cuisine-gifs"
+          >Mexican Cuisine GIFs</a
+        >
+      </div>
+      <script
+        type="text/javascript"
+        async
+        src="https://tenor.com/embed.js"
+      ></script>
+      <!-- End copied code -->
+
+      <br />
+      <br />
+      <br />
+      <input class="submit_button" value="Add more order" type="submit" />
+    </form>
+  </body>
+</html>

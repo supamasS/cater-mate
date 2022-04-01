@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cater Mate Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&family=Red+Hat+Mono:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/styles.css"
+      th:href="@{/css/styles.css}"
+    />
+    <style>
+      form {
+        margin-left: 0;
+        margin-right: 0;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cater Mate</h1>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+      "
+    >
+      <img
+        style="height: 500px; width: 400px"
+        src="../static/images/pexels-roman-odintsov-4958654.jpeg"
+        th:src="@{images/pexels-roman-odintsov-4958654.jpeg}"
+      />
+      <form action="order.html" th:action="@{/order}" id="form">
+        <h2>User Login</h2>
+        <br />
+        <input id="username" type="text" placeholder="Username" required />
+        <input id="password" type="password" placeholder="Password" required />
+        <br />
+        <br />
+        <br />
+        <input class="submit_button" value="Login" type="submit" />
+      </form>
+    </div>
+
+    <div id="feedback"></div>
+    <script type="text/javascript"
+            src="../static/script/login.js"
+            th:src="@{script/login.js}"></script>
+  </body>
+</html>
