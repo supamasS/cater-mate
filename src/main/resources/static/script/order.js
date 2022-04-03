@@ -1,8 +1,3 @@
-/* <div class="form-card col-sm-6">
-<label class="form-control-label col-sm-4">Taco Pack</label>
-<label class="form-control-label col-sm-4">$20 </label>
-</div> */
-
 let data = [
   ["Taco Pack", 35],
   ["Burrito Pack", 32],
@@ -20,8 +15,8 @@ data.forEach((item) => {
 
   td0.innerText = item[0];
   td1.innerText = item[1];
-  // td2.appendChild(document.createElement("input"));
-  // td3.appendChild(document.createElement("input"));
+  td2.appendChild(document.createElement("input"));
+  td3.appendChild(document.createElement("input"));
 
   tr.appendChild(td0);
   tr.appendChild(td1);
@@ -31,9 +26,39 @@ data.forEach((item) => {
   list.appendChild(tr);
 });
 
+let ele = document.getElementById("feedback");
+
+function validate() {
+  let datePromised = document.getElementById("datePromised");
+
+  if (datePromised.value == undefined || datePromised.value == "") {
+    alert("Please provide Date Promised!");
+    datePromised.focus();
+    return false;
+  } else if (!check_date(datePromised.value)) {
+    alert("Please provide Date Promised in the correct format!");
+    datePromised.focus();
+    return false;
+  }
+
+  let readyTime = document.getElementById("readyTime");
+
+  if (readyTime.value == undefined || readyTime.value == "") {
+    alert("Please provide Kitchen Ready Time!");
+    readyTime.focus();
+    return false;
+  } else if (!check_time(readyTime.value)) {
+    alert("Please provide Kitchen Ready Time in the correct format!");
+    readyTime.focus();
+    return false;
+  }
+
+  return true;
+}
+
 function check_date(date_input) {
   let re = new RegExp(
-    /^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$/
+    /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/
   );
   let message = "";
   let someWrong = false;
@@ -46,6 +71,27 @@ function check_date(date_input) {
     para.classList.add("danger");
     let t = document.createTextNode(message);
     para.appendChild(t);
+
+    ele.appendChild(para);
+    return false;
+  }
+  return true;
+}
+
+function check_time(time_input) {
+  let re = new RegExp(/^([0-1]\d|2[0-3]):[0-5]\d$/);
+  let message = "";
+  let someWrong = false;
+  if (!re.test(time_input)) {
+    message += "Time entered is not in the right format";
+    someWrong = true;
+  }
+  if (someWrong) {
+    let para = document.createElement("P");
+    para.classList.add("danger");
+    let t = document.createTextNode(message);
+    para.appendChild(t);
+
     ele.appendChild(para);
     return false;
   }

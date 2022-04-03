@@ -17,9 +17,14 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String getAllEmployees(Model model) {
-        model.addAttribute("listUsers", userService.getAllUsers());
+    public String doLogin(Model model) {
+//        model.addAttribute("listUsers", userService.getAllUsers());
         return "index";
+    }
+
+    @GetMapping("/main")
+    public String doMain(Model model) {
+        return "main_menu";
     }
 
     @GetMapping("/order")

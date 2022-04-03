@@ -32,14 +32,21 @@
         margin: auto;
         z-index: 2;
       }
+
+      .btn.btn-primary:active:hover,
+      .btn.btn-primary:hover,
+      .btn.btn-primary:focus {
+        border-color: #24798a;
+        background-color: #24798a;
+      }
     </style>
     <title>Cater Mate: Order Submitted</title>
   </head>
 
   <body>
-    <h1 class="display-1 pt-5">Cater Mate</h1>
+    <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
     <form
-      class="form-order-submitted"
+      class="form-order-submitted d-flex flex-column align-items-center"
       action="order.html"
       th:action="@{/order}"
     >
@@ -70,10 +77,14 @@
       <!-- End copied code -->
 
       <input
-        class="btn btn-primary col-6 mt-5"
+        class="btn btn-primary btn-block col-6 mt-5"
         value="Add more order"
         type="submit"
       />
+
+      <div class="mb-3 mt-5">
+        <a href="main_menu.html" th:href="@{/main}"> Back to Main Menu</a>
+      </div>
     </form>
   </body>
 </html>

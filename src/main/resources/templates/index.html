@@ -32,12 +32,25 @@
       .form-signin {
         width: 100%;
         max-width: 330px;
-        padding: 15px;
+        padding: 30px;
         margin: auto;
       }
 
       .form-signin .form-floating:focus-within {
         z-index: 2;
+      }
+
+      .btn-clock:focus,
+      .btn-block:hover,
+      .btn-block:visited {
+        background-color: #24798a;
+      }
+
+      .btn.btn-primary:active:hover,
+      .btn.btn-primary:hover,
+      .btn.btn-primary:focus {
+          border-color: #24798a;
+          background-color: #24798a;
       }
 
       #username {
@@ -56,8 +69,10 @@
     <title>Cater Mate Login</title>
   </head>
 
-  <body>
-    <h1 class="display-1 pt-5">Cater Mate</h1>
+  <body style="padding-top: 40px">
+
+
+    <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
     <div class="card-group">
       <img
         class="card"
@@ -68,8 +83,8 @@
         <form
           class="form-signin"
           id="form"
-          action="order.html"
-          th:action="@{/order}"
+          action="main_menu.html"
+          th:action="@{/main}"
         >
           <div class="form-floating">
             <input
@@ -90,7 +105,7 @@
             />
           </div>
           <button
-            class="w-100 btn btn-lg btn-primary"
+            class="w-100 btn btn-primary btn-block"
             style="margin-top: 20px"
             type="submit"
           >

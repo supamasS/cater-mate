@@ -1,32 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cater Mate New User</title>
 
-<head>
-    <meta charset="ISO-8859-1">
-    <title>Employee Management System</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<body>
-<div class="container">
-    <h1>User Management</h1>
-    <hr>
-    <h2>User</h2>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&family=Red+Hat+Mono:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
-    <form action="#" th:action="@{/saveUser}" th:object="${user}" method="POST">
-        <input type="text" th:field="*{userName}" placeholder="Username" class="form-control mb-4 col-4">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/styles.css"
+      th:href="@{/css/styles.css}"
+    />
+  </head>
 
-        <input type="text" th:field="*{password}" placeholder="Password" class="form-control mb-4 col-4">
+  <body>
+    <div class="container">
+      <h1 class="display-1 pt-5">Cater Mate</h1>
+      <div class="card mx-5">
+        <h2 class="mt-5">New User</h2>
+        <hr />
+        <div class="mx-5">
+          <form
+            class="d-flex flex-column align-items-center p-3"
+            action="show_users.html"
+            th:action="@{/saveUser}"
+            th:object="${user}"
+            method="POST"
+          >
+            <input
+              type="text"
+              th:field="*{userName}"
+              placeholder="Username"
+              class="form-control mb-4 col-4"
+            />
 
-        <input type="text" th:field="*{privilege}" placeholder="Privilege" class="form-control mb-4 col-4">
+            <input
+              type="text"
+              th:field="*{password}"
+              placeholder="Password"
+              class="form-control mb-4 col-4"
+            />
 
-        <button type="submit" class="btn btn-info col-2"> Save User</button>
-    </form>
+            <input
+              type="text"
+              th:field="*{privilege}"
+              placeholder="Privilege"
+              class="form-control mb-4 col-4"
+            />
 
-    <hr>
+            <button type="submit" class="btn btn-info col-2">Save User</button>
+          </form>
 
-    <a th:href="@{/users}"> Back to User List</a>
-</div>
-</body>
+          <hr />
 
+          <div class="mb-3">
+            <a href="show_users.html" th:href="@{/users}"> Back to User List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

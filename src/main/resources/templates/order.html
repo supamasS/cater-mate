@@ -112,6 +112,7 @@
 
       .btn-block:hover {
         color: #fff !important;
+        background-color: #24798a;
       }
 
       button:focus {
@@ -126,21 +127,56 @@
   </head>
 
   <body>
-    <h1 class="display-1 pt-5">Cater Mate</h1>
-    <h1>Order</h1>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <!--    <a class="navbar-brand" href="#">Navbar</a>-->
+      <!-- <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <div
+        class="collapse navbar-collapse d-flex flex-row justify-content-center"
+        id="navbarNavAltMarkup"
+      >
+        <!-- style="background-color: #ffc844 !important" -->
 
-    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link px-5 active" href="#"
+            >Order <span class="sr-only">(current)</span></a
+          >
+          <a class="nav-item nav-link px-5" href="#">Users</a>
+          <a class="nav-item nav-link px-5" href="#">Menu</a>
+          <a class="nav-item nav-link px-5" href="#">Kitchen</a>
+        </div>
+      </div>
+    </nav>
+
+    <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
+
+    <div class="container-fluid px-1 mx-auto">
       <div class="row d-flex justify-content-center">
-        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-          <div class="card">
+        <!-- <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center"> -->
+        <div class="text-center">
+          <div class="card" style="width: 80vw">
+            <h1>Order</h1>
             <h2 class="text-center mt-4 mb-4">Customer Information</h2>
             <form
+              name="orderForm"
               class="form-card"
               action="order_submitted.html"
               th:action="@{/order_submitted}"
+              onsubmit="return validate()"
             >
-              <div class="row justify-content-between text-left">
-                <div class="form-group col-sm-6 flex-column d-flex">
+              <div class="row justify-content-center text-left">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >First name<span class="text-danger"> *</span></label
                   >
@@ -152,7 +188,9 @@
                     required
                   />
                 </div>
-                <div class="form-group col-sm-6 flex-column d-flex">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Last name<span class="text-danger"> *</span></label
                   >
@@ -165,8 +203,10 @@
                   />
                 </div>
               </div>
-              <div class="row justify-content-between text-left">
-                <div class="form-group col-sm-6 flex-column d-flex">
+              <div class="row justify-content-center text-left">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Address<span class="text-danger"> *</span></label
                   >
@@ -177,7 +217,9 @@
                     placeholder="Delivery address"
                   />
                 </div>
-                <div class="form-group col-sm-6 flex-column d-flex">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Phone number<span class="text-danger"> *</span></label
                   >
@@ -186,13 +228,17 @@
                     id="mob"
                     name="mob"
                     placeholder="480-123-4567"
+                    pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                    title="Phone number format: 480-123-4567"
                     required
                   />
                 </div>
               </div>
 
-              <div class="row justify-content-between text-left">
-                <div class="form-group col-sm-6 flex-column d-flex">
+              <div class="row justify-content-center text-left">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Pickup/Delivery/Cater<span class="text-danger">
                       *</span
@@ -209,7 +255,9 @@
                     <option value="Cater">Full-Service Cater</option>
                   </select>
                 </div>
-                <div class="form-group col-sm-6 flex-column d-flex">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Location<span class="text-danger"> *</span></label
                   >
@@ -218,33 +266,45 @@
                     class="custom-select"
                     id="location_id"
                   >
-                    <option selected>Location</option>
+                    <option selected>Gilbert</option>
                     <option value="Eastmark">Eastmark</option>
                     <option value="Gilbert">Gilbert</option>
                     <option value="Mesa">Mesa</option>
                   </select>
                 </div>
               </div>
-              <div class="row justify-content-between text-left">
-                <div class="form-group col-sm-6 flex-column d-flex">
+              <div class="row justify-content-center text-left">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Date Promised<span class="text-danger"> *</span></label
                   >
-                  <input id="date" type="date" placeholder="mm/dd/yyyy" />
+                  <input
+                    id="datePromised"
+                    type="date"
+                    placeholder="mm/dd/yyyy"
+                  />
                 </div>
-                <div class="form-group col-sm-6 flex-column d-flex">
+                <div
+                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
+                >
                   <label class="form-control-label px-3"
                     >Kitchen Ready Time<span class="text-danger">
                       *</span
                     ></label
                   >
-                  <input id="time" type="time" placeholder="18:00pm" />
+                  <input
+                    id="readyTime"
+                    type="time"
+                    placeholder="06:00pm"
+                    value=""
+                  />
                 </div>
               </div>
 
               <h2 class="mt-5 mb-4">Order Details</h2>
-              <!-- <table id="order_details"></table> -->
-              <table id="menu" class="table table-bordered table-striped">
+              <table id="menu" class="table table-bordered">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -253,24 +313,37 @@
                     <th>Subtotal</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  <!-- <tr>
+                    <td>Fajita</td>
+                    <td>$20</td>
+                    <td>
+                      <input />
+                    </td>
+                    <td><input /></td>
+                  </tr> -->
+                </tbody>
               </table>
 
               <div class="row justify-content-end mt-5">
                 <div class="form-group col-sm-6">
                   <input
-                    class="btn-block btn-primary"
+                    class="btn btn-block btn-primary"
                     value="Done"
                     type="submit"
                   />
                 </div>
               </div>
             </form>
+            <!--            <div class="mb-3 mt-5">-->
+            <!--              <a href="main_menu.html" th:href="@{/main}"> Back to Main Menu</a>-->
+            <!--            </div>-->
           </div>
         </div>
       </div>
     </div>
-
+    <br />
+    <div id="feedback"></div>
     <script
       type="text/javascript"
       src="../static/script/order.js"
