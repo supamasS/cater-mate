@@ -122,5 +122,6 @@ select:focus {
 
 .navbar {
   background-color: #fed87e !important;
-  width: 100%;
+  padding-left: 100%;
+  padding-right: 100%;
 }

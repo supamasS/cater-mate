@@ -18,11 +18,6 @@
       rel="stylesheet"
     />
 
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
-      rel="stylesheet"
-    /> -->
-
     <link
       rel="stylesheet"
       type="text/css"
@@ -30,37 +25,12 @@
       th:href="@{/css/styles.css}"
     />
     <style>
-      /* .cell_right {
-        text-align: right;
-      } */
-      /* label {
-        margin-left: 60px;
-      } */
-      /* form {
-        width: 100%;
-        width: 800px;
-        padding: 40px;
-        margin: auto;
-      } */
-
-      body {
-        color: #000;
-        overflow-x: hidden;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-      }
-
       .card {
         padding: 30px 40px;
         margin-top: 0px;
         margin-bottom: 60px;
         border: none !important;
         box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
-      }
-
-      .blue-text {
-        color: #00bcd4;
       }
 
       .form-control-label {
@@ -88,14 +58,6 @@
         outline-width: 0;
         font-weight: 400;
       }
-
-      /* td input {
-        border: none;
-      } */
-
-      /* tr + td {
-        text-align: left;
-      } */
 
       select {
         margin: 5px 0px;
@@ -127,9 +89,9 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <!--    <a class="navbar-brand" href="#">Navbar</a>-->
-      <!-- <button
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -139,18 +101,18 @@
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <div
-        class="collapse navbar-collapse d-flex flex-row justify-content-center"
-        id="navbarNavAltMarkup"
-      >
-        <!-- style="background-color: #ffc844 !important" -->
-
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link px-5 active" href="#"
             >Order <span class="sr-only">(current)</span></a
           >
-          <a class="nav-item nav-link px-5" href="#">Users</a>
+          <a
+            class="nav-item nav-link px-5"
+            href="users.html"
+            th:href="@{/users}"
+            >Users</a
+          >
           <a class="nav-item nav-link px-5" href="#">Menu</a>
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
         </div>
@@ -225,8 +187,8 @@
                   >
                   <input
                     type="text"
-                    id="mob"
-                    name="mob"
+                    id="phone"
+                    name="phone"
                     placeholder="480-123-4567"
                     pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
                     title="Phone number format: 480-123-4567"
@@ -313,16 +275,7 @@
                     <th>Subtotal</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <!-- <tr>
-                    <td>Fajita</td>
-                    <td>$20</td>
-                    <td>
-                      <input />
-                    </td>
-                    <td><input /></td>
-                  </tr> -->
-                </tbody>
+                <tbody></tbody>
               </table>
 
               <div class="row justify-content-end mt-5">
@@ -335,9 +288,6 @@
                 </div>
               </div>
             </form>
-            <!--            <div class="mb-3 mt-5">-->
-            <!--              <a href="main_menu.html" th:href="@{/main}"> Back to Main Menu</a>-->
-            <!--            </div>-->
           </div>
         </div>
       </div>

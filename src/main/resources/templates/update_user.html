@@ -28,6 +28,38 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a
+            class="nav-item nav-link px-5"
+            href="order.html"
+            th:href="@{/order}"
+            >Order</a
+          >
+          <a
+            class="nav-item nav-link px-5 active"
+            href="users.html"
+            th:href="@{/users}"
+            >Users <span class="sr-only">(current)</span></a
+          >
+          <a class="nav-item nav-link px-5" href="#">Menu</a>
+          <a class="nav-item nav-link px-5" href="#">Kitchen</a>
+        </div>
+      </div>
+    </nav>
     <div class="container">
       <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
 
@@ -69,10 +101,6 @@
         </div>
 
         <hr />
-
-        <div class="mb-3">
-          <a href="show_users.html" th:href="@{/users}"> Back to Users List</a>
-        </div>
       </div>
     </div>
   </body>
