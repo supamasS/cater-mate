@@ -1,7 +1,7 @@
 let data = [
   ["Taco Pack", 35],
-  ["Burrito Pack", 32],
-  ["Enchilada Pack", 39],
+  ["Burrito Pack", 30],
+  ["Enchilada Pack", 35],
 ];
 
 let list = document.getElementById("menu");
@@ -15,8 +15,14 @@ data.forEach((item) => {
 
   td0.innerText = item[0];
   td1.innerText = item[1];
-  td2.appendChild(document.createElement("input"));
-  td3.appendChild(document.createElement("input"));
+
+  let quantity = document.createElement("input");
+  quantity.value = 1;
+  td2.appendChild(quantity);
+
+  let subtotal = document.createElement("input");
+  subtotal.value = item[1];
+  td3.appendChild(subtotal);
 
   tr.appendChild(td0);
   tr.appendChild(td1);
@@ -60,40 +66,12 @@ function check_date(date_input) {
   let re = new RegExp(
     /^20\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/
   );
-  let message = "";
-  let someWrong = false;
-  if (!re.test(date_input)) {
-    message += "Date entered is not in the right format";
-    someWrong = true;
-  }
-  if (someWrong) {
-    let para = document.createElement("P");
-    para.classList.add("danger");
-    let t = document.createTextNode(message);
-    para.appendChild(t);
 
-    ele.appendChild(para);
-    return false;
-  }
-  return true;
+  return re.test(date_input);
 }
 
 function check_time(time_input) {
   let re = new RegExp(/^([0-1]\d|2[0-3]):[0-5]\d$/);
-  let message = "";
-  let someWrong = false;
-  if (!re.test(time_input)) {
-    message += "Time entered is not in the right format";
-    someWrong = true;
-  }
-  if (someWrong) {
-    let para = document.createElement("P");
-    para.classList.add("danger");
-    let t = document.createTextNode(message);
-    para.appendChild(t);
 
-    ele.appendChild(para);
-    return false;
-  }
-  return true;
+  return re.test(time_input);
 }
