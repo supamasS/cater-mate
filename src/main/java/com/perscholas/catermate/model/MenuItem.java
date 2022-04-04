@@ -25,14 +25,6 @@ public class MenuItem {
         this.id = id;
     }
 
-    public String getUserName() {
-        return name;
-    }
-
-    public void setUserName(String userName) {
-        this.name = userName;
-    }
-
     public String getName() {
         return name;
     }

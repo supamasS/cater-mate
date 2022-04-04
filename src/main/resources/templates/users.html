@@ -72,7 +72,7 @@
             th:href="@{/users}"
             >Users <span class="sr-only">(current)</span></a
           >
-          <a class="nav-item nav-link px-5" href="#">Menu</a>
+          <a class="nav-item nav-link px-5" href="menu.html" th:href="@{/menu}">Menu</a>
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
           <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
             >Logout</a
@@ -103,13 +103,18 @@
           <table class="table table-bordered table-responsive-md mx-auto">
             <thead>
               <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>User Name</th>
                 <th>Password</th>
                 <th>Privilege</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="user : ${listUsers}">
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
                 <td th:text="${user.userName}"></td>
                 <td th:text="${user.password}"></td>
                 <td th:text="${user.privilege}"></td>

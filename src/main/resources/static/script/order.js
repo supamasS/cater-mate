@@ -1,36 +1,37 @@
-let data = [
-  ["Taco Pack", 35],
-  ["Burrito Pack", 30],
-  ["Enchilada Pack", 35],
-];
-
-let list = document.getElementById("menu");
-
-data.forEach((item) => {
-  let tr = document.createElement("tr");
-  let td0 = document.createElement("td");
-  let td1 = document.createElement("td");
-  let td2 = document.createElement("td");
-  let td3 = document.createElement("td");
-
-  td0.innerText = item[0];
-  td1.innerText = item[1];
-
-  let quantity = document.createElement("input");
-  quantity.value = 1;
-  td2.appendChild(quantity);
-
-  let subtotal = document.createElement("input");
-  subtotal.value = item[1];
-  td3.appendChild(subtotal);
-
-  tr.appendChild(td0);
-  tr.appendChild(td1);
-  tr.appendChild(td2);
-  tr.appendChild(td3);
-
-  list.appendChild(tr);
-});
+// below is creating mock data, not needed for the actual Spring boot run
+//let data = [
+//  ["Taco Pack", 35],
+//  ["Burrito Pack", 30],
+//  ["Enchilada Pack", 35],
+//];
+//
+//let list = document.getElementById("menu");
+//
+//data.forEach((item) => {
+//  let tr = document.createElement("tr");
+//  let td0 = document.createElement("td");
+//  let td1 = document.createElement("td");
+//  let td2 = document.createElement("td");
+//  let td3 = document.createElement("td");
+//
+//  td0.innerText = item[0];
+//  td1.innerText = item[1];
+//
+//  let quantity = document.createElement("input");
+//  quantity.value = 1;
+//  td2.appendChild(quantity);
+//
+//  let subtotal = document.createElement("input");
+//  subtotal.value = item[1];
+//  td3.appendChild(subtotal);
+//
+//  tr.appendChild(td0);
+//  tr.appendChild(td1);
+//  tr.appendChild(td2);
+//  tr.appendChild(td3);
+//
+//  list.appendChild(tr);
+//});
 
 let ele = document.getElementById("feedback");
 

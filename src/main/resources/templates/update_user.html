@@ -55,7 +55,7 @@
             th:href="@{/users}"
             >Users <span class="sr-only">(current)</span></a
           >
-          <a class="nav-item nav-link px-5" href="#">Menu</a>
+          <a class="nav-item nav-link px-5" href="menu.html" th:href="@{/menu}">Menu</a>
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
           <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
             >Logout</a
@@ -83,6 +83,18 @@
             <!-- method="POST" -->
             <!-- Add hidden form field to handle update -->
             <input type="hidden" th:field="*{id}" />
+
+            <input
+              type="text"
+              th:field="*{firstName}"
+              class="form-control mb-4 col-4"
+            />
+
+            <input
+              type="text"
+              th:field="*{lastName}"
+              class="form-control mb-4 col-4"
+            />
 
             <input
               type="text"

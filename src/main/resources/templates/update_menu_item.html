@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
+    <title>Cater Mate Update User</title>
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -23,24 +25,6 @@
       href="../static/css/styles.css"
       th:href="@{/css/styles.css}"
     />
-
-    <style>
-      .form-order-submitted {
-        width: 100%;
-        max-width: 600px;
-        padding: 40px;
-        margin: auto;
-        z-index: 2;
-      }
-
-      .btn.btn-primary:active:hover,
-      .btn.btn-primary:hover,
-      .btn.btn-primary:focus {
-        border-color: #24798a;
-        background-color: #24798a;
-      }
-    </style>
-    <title>Cater Mate: Order Submitted</title>
   </head>
 
   <body>
@@ -69,9 +53,10 @@
             class="nav-item nav-link px-5 active"
             href="users.html"
             th:href="@{/users}"
-            >Users <span class="sr-only">(current)</span></a
+          >Users</a
           >
-          <a class="nav-item nav-link px-5" href="menu.html" th:href="@{/menu}">Menu</a>
+          <a class="nav-item nav-link px-5 active" href="menu.html" th:href="@{/menu}">Menu <span class="sr-only">(current)</span></a
+          >
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
           <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
             >Logout</a
@@ -82,42 +67,42 @@
 
     <!-- End navbar -->
 
-    <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
-    <form
-      class="form-order-submitted d-flex flex-column align-items-center"
-      action="order.html"
-      th:action="@{/order}"
-    >
-      <h2 class="my-5">Thank you for your order!</h2>
+    <div class="container">
+      <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
 
-      <!-- Copied from https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340 -->
-      <div
-        class="tenor-gif-embed"
-        data-postid="17915340"
-        data-share-method="host"
-        data-aspect-ratio="1.66667"
-        data-width="100%"
-      >
-        <a
-          href="https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340"
-          >Mexican Cuisine Mexican Food GIF</a
-        >from
-        <a href="https://tenor.com/search/mexican+cuisine-gifs"
-          >Mexican Cuisine GIFs</a
-        >
+      <div class="card mx-5">
+        <h2 class="mt-5">Update Menu Item</h2>
+        <hr />
+        <div class="mx-5">
+          <form
+            class="d-flex flex-column align-items-center p-3"
+            action="menu.html"
+            th:action="@{/saveMenuItem}"
+            th:method="POST"
+            th:object="${menuItem}"
+          >
+            <!-- method="POST" -->
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
+
+            <input
+              type="text"
+              th:field="*{name}"
+              class="form-control mb-4 col-4"
+            />
+
+            <input
+              type="text"
+              th:field="*{price}"
+              class="form-control mb-4 col-4"
+            />
+
+            <button type="submit" class="btn btn-info col-4 mt-3 mb-5">
+              Update Menu Item
+            </button>
+          </form>
+        </div>
       </div>
-      <script
-        type="text/javascript"
-        async
-        src="https://tenor.com/embed.js"
-      ></script>
-      <!-- End copied code -->
-
-      <input
-        class="btn btn-primary btn-block col-6 my-5"
-        value="Add more order"
-        type="submit"
-      />
-    </form>
+    </div>
   </body>
 </html>

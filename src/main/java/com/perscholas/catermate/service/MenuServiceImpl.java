@@ -19,8 +19,6 @@ public class MenuServiceImpl implements MenuItemService {
         this.menuItemRepository = menuItemRepository;
     }
 
-    @Autowired
-
     @Override
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
