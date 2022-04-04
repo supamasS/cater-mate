@@ -1,6 +1,5 @@
 package com.perscholas.catermate.model;
 
-
 import javax.persistence.*;
 
 @Entity

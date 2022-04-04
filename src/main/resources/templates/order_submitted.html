@@ -27,7 +27,7 @@
     <style>
       .form-order-submitted {
         width: 100%;
-        max-width: 500px;
+        max-width: 600px;
         padding: 40px;
         margin: auto;
         z-index: 2;
@@ -73,17 +73,22 @@
           >
           <a class="nav-item nav-link px-5" href="#">Menu</a>
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
+          <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
+            >Logout</a
+          >
         </div>
       </div>
     </nav>
+
+    <!-- End navbar -->
+
     <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
     <form
       class="form-order-submitted d-flex flex-column align-items-center"
       action="order.html"
       th:action="@{/order}"
     >
-      <h2>Thank you for your order!</h2>
-      <br />
+      <h2 class="my-5">Thank you for your order!</h2>
 
       <!-- Copied from https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340 -->
       <div
@@ -109,7 +114,7 @@
       <!-- End copied code -->
 
       <input
-        class="btn btn-primary btn-block col-6 mt-5"
+        class="btn btn-primary btn-block col-6 my-5"
         value="Add more order"
         type="submit"
       />

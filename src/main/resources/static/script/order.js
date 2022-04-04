@@ -29,15 +29,15 @@ data.forEach((item) => {
 let ele = document.getElementById("feedback");
 
 function validate() {
-  let datePromised = document.getElementById("datePromised");
+  let cateringDate = document.getElementById("cateringDate");
 
-  if (datePromised.value == undefined || datePromised.value == "") {
-    alert("Please provide Date Promised!");
-    datePromised.focus();
+  if (cateringDate.value == undefined || cateringDate.value == "") {
+    alert("Please provide Catering Date!");
+    cateringDate.focus();
     return false;
-  } else if (!check_date(datePromised.value)) {
-    alert("Please provide Date Promised in the correct format!");
-    datePromised.focus();
+  } else if (!check_date(cateringDate.value)) {
+    alert("Invalid Catering Date!");
+    cateringDate.focus();
     return false;
   }
 
@@ -58,7 +58,7 @@ function validate() {
 
 function check_date(date_input) {
   let re = new RegExp(
-    /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/
+    /^20\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/
   );
   let message = "";
   let someWrong = false;

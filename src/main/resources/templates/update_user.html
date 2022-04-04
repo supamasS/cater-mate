@@ -57,9 +57,15 @@
           >
           <a class="nav-item nav-link px-5" href="#">Menu</a>
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
+          <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
+            >Logout</a
+          >
         </div>
       </div>
     </nav>
+
+    <!-- End navbar -->
+
     <div class="container">
       <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
 
@@ -69,11 +75,12 @@
         <div class="mx-5">
           <form
             class="d-flex flex-column align-items-center p-3"
-            action="show_users.html"
+            action="users.html"
             th:action="@{/saveUser}"
+            th:method="POST"
             th:object="${user}"
-            method="POST"
           >
+            <!-- method="POST" -->
             <!-- Add hidden form field to handle update -->
             <input type="hidden" th:field="*{id}" />
 
@@ -89,18 +96,22 @@
               class="form-control mb-4 col-4"
             />
 
-            <input
-              type="text"
+            <select
+              name="privilege"
+              class="custom-select form-control mb-4 col-4"
+              id="privilege"
               th:field="*{privilege}"
-              class="form-control mb-4 col-4"
-            />
-            <button type="submit" class="btn btn-info col-2">
+            >
+              <option value="User">Select Privilege</option>
+              <option value="User">User</option>
+              <option value="Admin">Admin</option>
+            </select>
+
+            <button type="submit" class="btn btn-info col-2 mt-3 mb-5">
               Update User
             </button>
           </form>
         </div>
-
-        <hr />
       </div>
     </div>
   </body>

@@ -100,7 +100,7 @@ select:focus {
 
 .btn-primary {
   background-color: #35afc8;
-  border: none;
+  border-color: #35afc8;
   color: white;
 }
 

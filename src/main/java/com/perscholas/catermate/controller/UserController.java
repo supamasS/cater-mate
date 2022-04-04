@@ -1,6 +1,7 @@
 package com.perscholas.catermate.controller;
 
 import com.perscholas.catermate.model.User;
+
 import com.perscholas.catermate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class UserController {
     @GetMapping("/users")
     public String getAllEmployees(Model model) {
         model.addAttribute("listUsers", userService.getAllUsers());
-        return "show_users";
+        return "users";
     }
 
     @GetMapping("/showNewUserForm")

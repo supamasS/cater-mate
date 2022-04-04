@@ -22,11 +22,6 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/main")
-    public String doMain(Model model) {
-        return "main_menu";
-    }
-
     @GetMapping("/order")
     public String doOrder() {
         return "order";
@@ -44,12 +39,4 @@ public class MainController {
 //        return "goodbye";
 //    }
 //
-//    @GetMapping("/cohort/java")
-//    public String goodbye(@RequestParam(name="topic", required=false, defaultValue="Spring") String topic,
-//                          @RequestParam(name="week", required=false, defaultValue="1") String week,
-//                          Model model) {
-//        model.addAttribute("topic", topic);
-//        model.addAttribute("week", week);
-//        return "cohortinfo";
-//    }
 }

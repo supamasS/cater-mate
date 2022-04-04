@@ -115,9 +115,14 @@
           >
           <a class="nav-item nav-link px-5" href="#">Menu</a>
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
+          <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
+            >Logout</a
+          >
         </div>
       </div>
     </nav>
+
+    <!-- End navbar -->
 
     <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
 
@@ -169,9 +174,7 @@
                 <div
                   class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
                 >
-                  <label class="form-control-label px-3"
-                    >Address<span class="text-danger"> *</span></label
-                  >
+                  <label class="form-control-label px-3">Address</label>
                   <input
                     type="text"
                     id="address"
@@ -240,10 +243,10 @@
                   class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
                 >
                   <label class="form-control-label px-3"
-                    >Date Promised<span class="text-danger"> *</span></label
+                    >Catering Date<span class="text-danger"> *</span></label
                   >
                   <input
-                    id="datePromised"
+                    id="cateringDate"
                     type="date"
                     placeholder="mm/dd/yyyy"
                   />
@@ -278,8 +281,26 @@
                 <tbody></tbody>
               </table>
 
+              <div class="mx-5" style="text-align: right">
+                <table class="table table-borderless">
+                  <tbody>
+                    <tr>
+                      <td>Subtotal:</td>
+                      <td>$100.00</td>
+                    </tr>
+                    <tr>
+                      <td>Tax:</td>
+                      <td>$8.00</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>$108.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="row justify-content-end mt-5">
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                   <input
                     class="btn btn-block btn-primary"
                     value="Done"
