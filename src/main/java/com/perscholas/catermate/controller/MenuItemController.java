@@ -20,13 +20,13 @@ public class MenuItemController {
     }
 
     @GetMapping("/menu")
-    public String getAllEmployees(Model model) {
+    public String getAll(Model model) {
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
         return "menu";
     }
 
     @GetMapping("/showNewMenuItemForm")
-    public String showNewMenuItemForm(Model model) {
+    public String showNewForm(Model model) {
         // create model attribute to bind form data
         MenuItem menuItem = new MenuItem();
         model.addAttribute("menuItem", menuItem);
@@ -34,8 +34,8 @@ public class MenuItemController {
     }
 
     @PostMapping("/saveMenuItem")
-    public String saveEmployee(@ModelAttribute("employee") MenuItem menuItem) {
-        // save employee to database
+    public String save(@ModelAttribute("menuItem") MenuItem menuItem) {
+        // save menuItem to database
         menuItemService.saveMenuItem(menuItem);
         return "redirect:/menu";
     }
@@ -46,7 +46,7 @@ public class MenuItemController {
         // get menuItem from the service
         MenuItem menuItem = menuItemService.getMenuItemById(id);
 
-        // set employee as a model attribute to pre-populate the form
+        // set menuItem as a model attribute to pre-populate the form
         model.addAttribute("menuItem", menuItem);
         return "update_menu_item";
     }
@@ -56,6 +56,6 @@ public class MenuItemController {
 
         // call delete menuItem method
         this.menuItemService.deleteMenuItemById(id);
-        return "redirect:/menuItems";
+        return "redirect:/menu";
     }
 }

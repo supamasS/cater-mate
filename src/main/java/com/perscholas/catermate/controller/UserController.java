@@ -21,13 +21,13 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String getAllEmployees(Model model) {
+    public String getAll(Model model) {
         model.addAttribute("listUsers", userService.getAllUsers());
         return "users";
     }
 
     @GetMapping("/showNewUserForm")
-    public String showNewUserForm(Model model) {
+    public String showNewForm(Model model) {
         // create model attribute to bind form data
         User user = new User();
         model.addAttribute("user", user);
@@ -35,8 +35,8 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public String saveEmployee(@ModelAttribute("employee") User user) {
-        // save employee to database
+    public String save(@ModelAttribute("user") User user) {
+        // save user to database
         userService.saveUser(user);
         return "redirect:/users";
     }
@@ -47,7 +47,7 @@ public class UserController {
         // get user from the service
         User user = userService.getUserById(id);
 
-        // set employee as a model attribute to pre-populate the form
+        // set user as a model attribute to pre-populate the form
         model.addAttribute("user", user);
         return "update_user";
     }

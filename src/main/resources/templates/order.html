@@ -26,9 +26,12 @@
     />
     <style>
       .card {
-        padding: 30px 40px;
+        padding: 20px 10px 10px 10px;
         margin-top: 0px;
         margin-bottom: 60px;
+      }
+
+      .card-1 {
         border: none !important;
         box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
       }
@@ -83,6 +86,15 @@
         box-shadow: none !important;
         outline-width: 0;
       }
+
+      .card-title {
+        color: #35afc8;
+      }
+
+      .card-footer {
+        background-color: white;
+        padding: 0.75rem 0 0 0;
+      }
     </style>
 
     <title>Cater Mate Order</title>
@@ -127,200 +139,57 @@
     <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
 
     <div class="container-fluid px-1 mx-auto">
-      <div class="row d-flex justify-content-center">
-        <!-- <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center"> -->
-        <div class="text-center">
-          <div class="card" style="width: 80vw">
-            <h1>Order</h1>
-            <h2 class="text-center mt-4 mb-4">Customer Information</h2>
-            <form
-              name="orderForm"
-              class="form-card"
-              action="order_submitted.html"
-              th:action="@{/order_submitted}"
-              onsubmit="return validate()"
-            >
-              <div class="row justify-content-center text-left">
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >First Name<span class="text-danger"> *</span></label
-                  >
-                  <input
-                    type="text"
-                    id="fname"
-                    name="fname"
-                    placeholder="Customer's first name"
-                    required
-                  />
-                </div>
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >Last Name<span class="text-danger"> *</span></label
-                  >
-                  <input
-                    type="text"
-                    id="lname"
-                    name="lname"
-                    placeholder="Customer's last name"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row justify-content-center text-left">
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3">Address</label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Delivery address"
-                  />
-                </div>
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >Phone Number<span class="text-danger"> *</span></label
-                  >
-                  <input
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    placeholder="480-123-4567"
-                    pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
-                    title="Phone number format: 480-123-4567"
-                    required
-                  />
-                </div>
-              </div>
+        <div class="card-deck mx-4">
+<!--        <div class="text-center"> style="width: 80vw" -->
+          <div class="card-1 card text-center col-md-8 col-sm-12 py-4">
+            <h1 >Menu</h1>
+            <hr class="mb-4" />
+<!--            d-flex card-deck flex-row row-->
+            <!-- Button trigger modal -->
+              <div class="card-deck d-flex card-deck flex-row row mx-1">
+                <div class="col-lg-6 col-md-12 col-sm-12 mb-3" th:each="menuItem : ${listMenuItems}">
+                  <div class="card" data-toggle="modal" th:data-target="${'#exampleModal'+menuItem.id}">
+                    <h5 class="card-title text-left" th:text="${menuItem.name}" ></h5>
+                    <h6 class="card-footer text-right" th:text="${menuItem.price}" ></h6>
+                  </div>
 
-              <div class="row justify-content-center text-left">
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >Pickup/Delivery/Cater<span class="text-danger">
-                      *</span
-                    ></label
-                  >
-                  <select
-                    name="pickup_or_delivery"
-                    class="custom-select"
-                    id="pickup_or_delivery_id"
-                  >
-                    <option selected>Deliver</option>
-                    <option value="Delivery">Deliver</option>
-                    <option value="Pick Up">Pick Up</option>
-                    <option value="Cater">Full-Service Cater</option>
-                  </select>
-                </div>
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >Location<span class="text-danger"> *</span></label
-                  >
-                  <select
-                    name="location"
-                    class="custom-select"
-                    id="location_id"
-                  >
-                    <option selected>Gilbert</option>
-                    <option value="Eastmark">Eastmark</option>
-                    <option value="Gilbert">Gilbert</option>
-                    <option value="Mesa">Mesa</option>
-                  </select>
+                  <div class="modal fade" th:id="${'exampleModal'+menuItem.id}" tabindex="-1" role="dialog" th:aria-labelledby="${'exampleModalLabel'+menuItem.id}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" th:id="${'exampleModalLabel'+menuItem.id}" th:text="${menuItem.name}">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p th:text="${menuItem.price}">Price</p>
+                        </div>
+                        <div class="modal-footer">
+                          <form action="order.html" th:action="@{/addToCart/{id}(id=${menuItem.id})}">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!--                          <button type="button" class="btn btn-primary">Add to Cart</button>-->
+                            <input
+                                    class="btn btn-secondary"
+                                    value="Add to Cart"
+                                    type="submit"
+                            />
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal -->
                 </div>
               </div>
-              <div class="row justify-content-center text-left">
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >Catering Date<span class="text-danger"> *</span></label
-                  >
-                  <input
-                    id="cateringDate"
-                    type="date"
-                    placeholder="mm/dd/yyyy"
-                  />
-                </div>
-                <div
-                  class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
-                >
-                  <label class="form-control-label px-3"
-                    >Kitchen Ready Time<span class="text-danger">
-                      *</span
-                    ></label
-                  >
-                  <input
-                    id="readyTime"
-                    type="time"
-                    placeholder="06:00pm"
-                    value=""
-                  />
-                </div>
-              </div>
+          </div>
+          <div class="card-1 card col-md-4 col-sm-12 py-4">
+            <h1>Cart</h1>
+            <hr class="mb-4" />
 
-              <h2 class="mt-5 mb-4">Order Details</h2>
-              <table id="menu" class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <tr th:each="menuItem : ${listMenuItems}">
-                  <td class="text-left px-3" th:text="${menuItem.name}"></td>
-                  <td th:text="${menuItem.price}"></td>
-                  <td>
-                    <input />
-                  </td>
-                  <td><input /></td>
-                </tr>
-                </tbody>
-              </table>
 
-              <div class="mx-5 px-5" style="text-align: right">
-                <table class="table table-borderless">
-                  <tbody>
-                    <tr>
-                      <td>Subtotal:</td>
-                      <td>$100.00</td>
-                    </tr>
-                    <tr>
-                      <td>Tax:</td>
-                      <td>$8.00</td>
-                    </tr>
-                    <tr>
-                      <td>Total:</td>
-                      <td>$108.00</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="row justify-content-end mt-5">
-                <div class="form-group col-sm-4">
-                  <input
-                    class="btn btn-block btn-primary"
-                    value="Done"
-                    type="submit"
-                  />
-                </div>
-              </div>
-            </form>
           </div>
         </div>
-      </div>
     </div>
     <br />
     <div id="feedback"></div>
