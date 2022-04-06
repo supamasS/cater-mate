@@ -37,6 +37,10 @@ public class MenuItem {
         return price;
     }
 
+    public String getPriceDisplay() {
+        return String.format("$%.2f", price);
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }

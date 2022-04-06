@@ -85,6 +85,7 @@
               placeholder="First Name"
               class="form-control mb-4 col-4"
             />
+            <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</div>
 
             <input
               type="text"

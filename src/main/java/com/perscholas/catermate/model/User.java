@@ -1,6 +1,9 @@
 package com.perscholas.catermate.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="USERS")
@@ -9,14 +12,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
+    @Size(min=2, max=50)
+    @Column(name="FIRST_NAME")
     private String firstName;
 
+    @NotNull
+    @Size(min=2, max=50)
     private String lastName;
 
+    @NotNull
+    @Size(min=2, max=50)
     private String userName;
 
+    @NotNull
+    @Size(min=4, max=50)
     private String password;
 
+    @NotNull
+    @Size(min=2, max=50)
     private String privilege;
 
     public User() {
