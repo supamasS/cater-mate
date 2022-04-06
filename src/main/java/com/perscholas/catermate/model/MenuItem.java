@@ -14,7 +14,15 @@ public class MenuItem {
 
     private double price;
 
+//    @Transient
+//    private int quantity; // needed to keep initial quantity for cartItem, not really used by menuItem
+//
+//    @Transient
+//    private String quantityString;
+
     public MenuItem() {
+//        this.quantity = 2;
+//        this.quantityString = "25";
     }
 
     public long getId() {
@@ -44,4 +52,22 @@ public class MenuItem {
     public void setPrice(double price) {
         this.price = price;
     }
+
+//    public int getQuantity() {
+//        return quantity;
+//    }
+//
+//    public void setQuantity(int quantity) {
+//        this.quantity = quantity;
+//        this.quantityString = String.valueOf(quantity);
+//    }
+//
+//    public String getQuantityString() {
+//        return quantityString;
+//    }
+//
+//    public void setQuantityString(String quantityString) {
+//        this.quantityString = quantityString;
+//        this.quantity = Integer.parseInt(quantityString);
+//    }
 }

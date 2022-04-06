@@ -15,7 +15,10 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long user_id;
+    private long userId;
+
+    @Transient
+    private int currentItemQuantity;
 
     @Transient
     private double subTotal;
@@ -30,7 +33,9 @@ public class Cart {
     private List<CartItem> cartItemList;
 
     public Cart() {
-        user_id = 2;
+        // yuyee need to set the userId properly
+        userId = 2;
+        currentItemQuantity = 1;
         cartItemList = new ArrayList<>();
     }
 
@@ -42,12 +47,20 @@ public class Cart {
         this.id = id;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public int getCurrentItemQuantity() {
+        return currentItemQuantity;
+    }
+
+    public void setCurrentItemQuantity(int currentItemQuantity) {
+        this.currentItemQuantity = currentItemQuantity;
     }
 
     public double getSubTotal() {

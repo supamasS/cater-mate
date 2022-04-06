@@ -164,6 +164,24 @@
                   class="card-title text-left"
                   th:text="${menuItem.name}"
                 ></h5>
+<!--                test-->
+<!--                <form-->
+<!--                        action="order.html"-->
+<!--                        th:action="@{/addToCart/{cart_id}/{menu_item_id}(cart_id=${cart.id},menu_item_id=${menuItem.id})}"-->
+<!--                        th:object="${menuItem}"-->
+<!--                        th:method="POST"-->
+<!--                >-->
+<!--                  <input-->
+<!--                          type="text"-->
+<!--                          th:field="*{name}"-->
+<!--                          class="form-control col-4"-->
+<!--                  />-->
+<!--                  <input-->
+<!--                          class="btn btn-secondary"-->
+<!--                          value="Add to Cart"-->
+<!--                          type="submit"-->
+<!--                  />-->
+<!--                </form>-->
                 <h6
                   class="card-footer text-right"
                   th:text="${menuItem.priceDisplay}"
@@ -204,7 +222,21 @@
                       <form
                         action="order.html"
                         th:action="@{/addToCart/{cart_id}/{menu_item_id}(cart_id=${cart.id},menu_item_id=${menuItem.id})}"
+                        th:object="${cart}"
+                        th:method="POST"
                       >
+
+<!--                        <p th:text="${menuItem.quantityString}">Price</p>-->
+<!--                        <p th:text="${menuItem.price}">Price</p>-->
+<!--                        <p th:text="${menuItem.quantity}">Price</p>-->
+
+                        <input
+                                type="number"
+                                th:field="*{currentItemQuantity}"
+                                class="form-control col-4"
+                        />
+<!--                        placeholder="1"-->
+
                         <button
                           type="button"
                           class="btn btn-secondary"
@@ -237,27 +269,23 @@
                 <td class="text-left" th:text="${cartItem.name}">Name</td>
                 <td class="text-right" th:text="${cartItem.subTotalDisplay}">$10.00</td>
               </tr>
+              <tr>
+                <td></td>
+                <td class="text-right">Subtotal:</td>
+                <td class="text-right" th:text="${cart.subTotalDisplay}">$100.00</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-right">Tax:</td>
+                <td class="text-right" th:text="${cart.taxDisplay}">$8.00</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-right">Total:</td>
+                <td class="text-right" th:text="${cart.totalDisplay}">$108.00</td>
+              </tr>
             </tbody>
           </table>
-
-          <div class="mx-5 px-5" style="text-align: right">
-            <table class="table table-borderless">
-              <tbody>
-                <tr>
-                  <td>Subtotal:</td>
-                  <td th:text="${cart.subTotalDisplay}">$100.00</td>
-                </tr>
-                <tr>
-                  <td>Tax:</td>
-                  <td th:text="${cart.taxDisplay}">$8.00</td>
-                </tr>
-                <tr>
-                  <td>Total:</td>
-                  <td th:text="${cart.totalDisplay}">$108.00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
 
           <form
             name="orderForm"

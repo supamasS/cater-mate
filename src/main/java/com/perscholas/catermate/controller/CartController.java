@@ -9,10 +9,10 @@ import com.perscholas.catermate.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 
 @Controller
 public class CartController {
@@ -67,25 +67,33 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @GetMapping("/addToCart/{cart_id}/{menu_item_id}")
+    @PostMapping("/addToCart/{cart_id}/{menu_item_id}")
     public String addToCart(
             @PathVariable(value="cart_id") long cartId,
             @PathVariable(value = "menu_item_id") long menuItemId,
+            @ModelAttribute("cart") Cart modelCart,
+            BindingResult bindingResult,
             Model model) {
 
-        System.out.println("adding item " + menuItemId + " to cart " + cartId);
+        System.out.println("adding item " + menuItemId + " to cart " + cartId + " and " + modelCart.getId());
         Cart cart = cartService.getCartById(cartId);
 
         MenuItem menuItem = menuItemService.getMenuItemById(menuItemId);
 
         CartItem cartItem = new CartItem(menuItem);
-        cartItem.setQuantity(1);
+
+        System.out.println("quantity = " + modelCart.getCurrentItemQuantity());
+
+        cartItem.setQuantity(modelCart.getCurrentItemQuantity());
 
         cart.getCartItemList().add(cartItem);
+
+        System.out.println("In cart controller");
+        cart.getCartItemList().forEach(i -> System.out.println(i.getName() + " " + i.getQuantity()));
 
         cartItemService.saveCartItem(cartItem);
         cartService.saveCart(cart);
 
-        return "redirect:/order/" + cartId;
+        return "redirect:/orderCart/" + cartId;
     }
 }

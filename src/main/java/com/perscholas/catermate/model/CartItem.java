@@ -32,6 +32,7 @@ public class CartItem {
         this.menuItemId = menuItem.getId();
         this.name = menuItem.getName();
         this.price = menuItem.getPrice();
+//        this.quantity = menuItem.getQuantity();
     }
 
     public long getId() {

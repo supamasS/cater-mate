@@ -6,6 +6,7 @@ import com.perscholas.catermate.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -31,10 +32,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(long id) {
-        User user = userRepository.getById(id);
-        if(user == null) {
-            throw new UserNotFoundException();
-        }
+        User user;
+
+//        try {
+            user = userRepository.getById(id);
+//        } catch(EntityNotFoundException e) {
+//            throw new UserNotFoundException();
+//        }
         return user;
     }
 
