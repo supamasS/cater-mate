@@ -80,7 +80,7 @@ public class CartController {
 
         MenuItem menuItem = menuItemService.getMenuItemById(menuItemId);
 
-        CartItem cartItem = new CartItem(menuItem);
+        CartItem cartItem = new CartItem(cart, menuItem);
 
         System.out.println("quantity = " + modelCart.getCurrentItemQuantity());
 

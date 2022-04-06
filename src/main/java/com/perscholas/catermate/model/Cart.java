@@ -15,7 +15,12 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long userId;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
+    @OneToMany(mappedBy = "cart", targetEntity = CartItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<CartItem> cartItemList;
 
     @Transient
     private int currentItemQuantity;
@@ -29,12 +34,9 @@ public class Cart {
     @Transient
     private double total;
 
-    @OneToMany(targetEntity = CartItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    private List<CartItem> cartItemList;
-
     public Cart() {
-        // yuyee need to set the userId properly
-        userId = 2;
+        // yuyee need to set the user properly
+//        userId = 2;
         currentItemQuantity = 1;
         cartItemList = new ArrayList<>();
     }
@@ -47,13 +49,13 @@ public class Cart {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public int getCurrentItemQuantity() {
         return currentItemQuantity;
@@ -112,12 +114,5 @@ public class Cart {
 
     public void addCartItemToCart(CartItem cartItem) {
         this.cartItemList.add(cartItem);
-//        this.subTotal += cartItem.getSubtotal();
-//        this.tax = this.subTotal * SALES_TAX;
-//        this.total = this.subTotal + this.tax;
-//
-//        System.out.println("subtotal is " + this.subTotal);
-//        System.out.println("tax is " + this.tax);
-//        System.out.println("total is " + this.total);
     }
 }

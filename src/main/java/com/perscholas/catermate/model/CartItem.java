@@ -2,6 +2,8 @@ package com.perscholas.catermate.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="CART_ITEMS")
@@ -10,25 +12,31 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @ManyToOne(targetEntity = Cart.class, fetch = FetchType.EAGER)
-////    private long cartId;
-//    private Cart cart;
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
     private long menuItemId;
 
+    @NotNull
+    @Size(min=2, max=50)
     private String name;
 
+    @NotNull
     private double price;
 
+    @NotNull
     private int quantity;
 
     @Transient
     private double subTotal;
 
+
     public CartItem() {
     }
 
-    public CartItem(MenuItem menuItem) {
+    public CartItem(Cart cart, MenuItem menuItem) {
+        this.cart = cart;
         this.menuItemId = menuItem.getId();
         this.name = menuItem.getName();
         this.price = menuItem.getPrice();
@@ -43,22 +51,13 @@ public class CartItem {
         this.id = id;
     }
 
-//    public long getCartId() {
-//        return cartId;
-//    }
-//
-//    public void setCartId(long cartId) {
-//        this.cartId = cartId;
-//    }
+    public Cart getCart() {
+        return cart;
+    }
 
-
-//    public Cart getCart() {
-//        return cart;
-//    }
-//
-//    public void setCart(Cart cart) {
-//        this.cart = cart;
-//    }
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 
     public long getMenuItemId() {
         return menuItemId;

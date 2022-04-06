@@ -1,7 +1,11 @@
 package com.perscholas.catermate.model;
 
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="MENU_ITEMS")
@@ -10,19 +14,14 @@ public class MenuItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
+    @Size(min=2, max=50)
     private String name;
 
+    @NotNull
     private double price;
 
-//    @Transient
-//    private int quantity; // needed to keep initial quantity for cartItem, not really used by menuItem
-//
-//    @Transient
-//    private String quantityString;
-
     public MenuItem() {
-//        this.quantity = 2;
-//        this.quantityString = "25";
     }
 
     public long getId() {
@@ -52,22 +51,4 @@ public class MenuItem {
     public void setPrice(double price) {
         this.price = price;
     }
-
-//    public int getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setQuantity(int quantity) {
-//        this.quantity = quantity;
-//        this.quantityString = String.valueOf(quantity);
-//    }
-//
-//    public String getQuantityString() {
-//        return quantityString;
-//    }
-//
-//    public void setQuantityString(String quantityString) {
-//        this.quantityString = quantityString;
-//        this.quantity = Integer.parseInt(quantityString);
-//    }
 }

@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="USERS")
@@ -22,7 +24,7 @@ public class User {
     private String lastName;
 
     @NotNull
-    @Size(min=2, max=50)
+    @Size(min=2, max=20)
     private String userName;
 
     @NotNull
@@ -30,10 +32,14 @@ public class User {
     private String password;
 
     @NotNull
-    @Size(min=2, max=50)
+    @Size(min=2, max=30)
     private String privilege;
 
+//    @OneToMany(mappedBy = "user", targetEntity = Cart.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//    private Set<Cart> carts;
+
     public User() {
+//        carts = new HashSet<>();
     }
 
     public long getId() {
@@ -84,4 +90,12 @@ public class User {
     public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
+
+//    public Set<Cart> getCarts() {
+//        return carts;
+//    }
+//
+//    public void setCarts(Set<Cart> carts) {
+//        this.carts = carts;
+//    }
 }
