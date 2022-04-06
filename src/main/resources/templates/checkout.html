@@ -269,93 +269,48 @@
               </div>
 
               <h2 class="mt-5 mb-5">Order Details</h2>
-
-              <!-- Button trigger modal -->
-              <div class="d-flex flex-row row mx-5">
-                <div class="col-lg-6 col-md-12" th:each="menuItem : ${listMenuItems}">
-  <!--                <td class="text-left px-3" th:text="${menuItem.name}"></td>-->
-  <!--                <td th:text="${menuItem.price}"></td>-->
-                  <div class="card" data-toggle="modal" th:data-target="${'#exampleModal'+menuItem.id}">
-                    <!--                    <div class="card" data-toggle="modal" data-target="#exampleModal">-->
-                    <h2 class="text-left" th:text="${menuItem.name}" ></h2>
-                    <h4 class="text-right" th:text="${menuItem.price}" ></h4>
-                  </div>
-
-                  <div class="modal fade" th:id="${'exampleModal'+menuItem.id}" tabindex="-1" role="dialog" th:aria-labelledby="${'exampleModalLabel'+menuItem.id}" aria-hidden="true">
-                    <!--                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" th:id="${'exampleModalLabel'+menuItem.id}" th:text="${menuItem.name}">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <p th:text="${menuItem.price}">Price</p>
-                        </div>
-                        <div class="modal-footer">
-                          <form action="order.html" th:action="@{/addToCart/{id}(id=${menuItem.id})}">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  <!--                          <button type="button" class="btn btn-primary">Add to Cart</button>-->
-                            <input
-                                    class="btn btn-secondary"
-                                    value="Add to Cart"
-                                    type="submit"
-                            />
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Modal -->
-
-
-
-                </div>
-              </div>
-
-
-
-              <table id="menu" class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <tr th:each="menuItem : ${listMenuItems}">
-                  <td class="text-left px-3" th:text="${menuItem.name}"></td>
-                  <td th:text="${menuItem.price}"></td>
-                  <td>
-                    <input />
-                  </td>
-                  <td><input /></td>
-                </tr>
-                </tbody>
-              </table>
-
-              <div class="mx-5 px-5" style="text-align: right">
-                <table class="table table-borderless">
+                <table id="cart-table" class="table">
+                  <thead>
+                    <tr>
+                      <th>Quantity</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
                   <tbody>
-                    <tr>
-                      <td>Subtotal:</td>
-                      <td>$100.00</td>
-                    </tr>
-                    <tr>
-                      <td>Tax:</td>
-                      <td>$8.00</td>
-                    </tr>
-                    <tr>
-                      <td>Total:</td>
-                      <td>$108.00</td>
-                    </tr>
+                  <tr th:each="cartItem : ${listCartItems}">
+                    <td class="text-right pr-5" th:text="${cartItem.quantity}">Quantity</td>
+                    <td class="text-left" th:text="${cartItem.name}">Name</td>
+                    <td class="text-right" th:text="${cartItem.priceDisplay}">Price</td>
+                    <td class="text-right" th:text="${cartItem.subTotalDisplay}">Subtotal</td>
+                  </tr>
+
+                  <!-- Blank row to space out the summary items-->
+                  <tr><td><br/></td><td><br/></td><td><br/></td><td><br/></td></tr>
+
+                  <!-- Summary -->
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right">Subtotal:</td>
+                    <td class="text-right" th:text="${cart.subTotalDisplay}">$100.00</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right">Tax:</td>
+                    <td class="text-right" th:text="${cart.taxDisplay}">$8.00</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right">Total:</td>
+                    <td class="text-right" th:text="${cart.totalDisplay}">$108.00</td>
+                  </tr>
                   </tbody>
                 </table>
-              </div>
+
               <div class="row justify-content-end mt-5">
                 <div class="form-group col-sm-4">
                   <input
