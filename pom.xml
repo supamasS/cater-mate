@@ -8,7 +8,7 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.perscholas</groupId>
+	<groupId>org.supamassirichotiyakul</groupId>
 	<artifactId>catermate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>catermate</name>

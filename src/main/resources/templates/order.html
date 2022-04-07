@@ -164,24 +164,6 @@
                   class="card-title text-left"
                   th:text="${menuItem.name}"
                 ></h5>
-<!--                test-->
-<!--                <form-->
-<!--                        action="order.html"-->
-<!--                        th:action="@{/addToCart/{cart_id}/{menu_item_id}(cart_id=${cart.id},menu_item_id=${menuItem.id})}"-->
-<!--                        th:object="${menuItem}"-->
-<!--                        th:method="POST"-->
-<!--                >-->
-<!--                  <input-->
-<!--                          type="text"-->
-<!--                          th:field="*{name}"-->
-<!--                          class="form-control col-4"-->
-<!--                  />-->
-<!--                  <input-->
-<!--                          class="btn btn-secondary"-->
-<!--                          value="Add to Cart"-->
-<!--                          type="submit"-->
-<!--                  />-->
-<!--                </form>-->
                 <h6
                   class="card-footer text-right"
                   th:text="${menuItem.priceDisplay}"
@@ -221,21 +203,20 @@
                     <div class="modal-footer">
                       <form
                         action="order.html"
-                        th:action="@{/addToCart/{cart_id}/{menu_item_id}(cart_id=${cart.id},menu_item_id=${menuItem.id})}"
+                        th:action="@{/addToCart/{menu_item_id}(menu_item_id=${menuItem.id})}"
                         th:object="${cart}"
                         th:method="POST"
                       >
 
-<!--                        <p th:text="${menuItem.quantityString}">Price</p>-->
-<!--                        <p th:text="${menuItem.price}">Price</p>-->
-<!--                        <p th:text="${menuItem.quantity}">Price</p>-->
+                        <!-- Add hidden form fields to handle update, since it creates a new object -->
+                        <input type="hidden" th:field="*{id}" />
+                        <input type="hidden" th:field="*{cartItemList}" />
 
                         <input
                                 type="number"
                                 th:field="*{currentItemQuantity}"
                                 class="form-control col-4"
                         />
-<!--                        placeholder="1"-->
 
                         <button
                           type="button"
@@ -244,7 +225,6 @@
                         >
                           Close
                         </button>
-                        <!--                          <button type="button" class="btn btn-primary">Add to Cart</button>-->
                         <input
                           class="btn btn-secondary"
                           value="Add to Cart"
@@ -256,6 +236,7 @@
                 </div>
               </div>
               <!-- Modal -->
+
             </div>
           </div>
         </div>
@@ -264,7 +245,7 @@
           <hr class="mb-4" />
           <table id="cart-table" class="table">
             <tbody>
-              <tr th:each="cartItem : ${listCartItems}">
+              <tr th:each="cartItem : ${cart.cartItemList}">
                 <td class="text-right pr-2" th:text="${cartItem.quantity}">Quantity</td>
                 <td class="text-left" th:text="${cartItem.name}">Name</td>
                 <td class="text-right" th:text="${cartItem.subTotalDisplay}">$10.00</td>

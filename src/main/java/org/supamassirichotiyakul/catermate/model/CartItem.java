@@ -28,8 +28,8 @@ public class CartItem {
     @NotNull
     private int quantity;
 
-    @Transient
-    private double subTotal;
+//    @Transient
+//    private double subTotal;
 
 
     public CartItem() {
@@ -40,7 +40,10 @@ public class CartItem {
         this.menuItemId = menuItem.getId();
         this.name = menuItem.getName();
         this.price = menuItem.getPrice();
-//        this.quantity = menuItem.getQuantity();
+
+//        System.out.println("quantity = " + cart.getCurrentItemQuantity());
+        this.quantity = cart.getCurrentItemQuantity();
+        cart.setCurrentItemQuantity(1);     // clear it back to 1 for the next item user wants to add
     }
 
     public long getId() {
@@ -103,7 +106,7 @@ public class CartItem {
         return String.format("$%.2f", getSubTotal());
     }
 
-    public void setSubTotal(double subTotal) {
-        this.subTotal = subTotal;
-    }
+//    public void setSubTotal(double subTotal) {
+//        this.subTotal = subTotal;
+//    }
 }

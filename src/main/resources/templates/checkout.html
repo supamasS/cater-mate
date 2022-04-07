@@ -137,7 +137,9 @@
               name="orderForm"
               class="form-card"
               action="order_submitted.html"
-              th:action="@{/order_submitted}"
+              th:action="@{'/order_submitted/?cart_id='+${cart.id}}"
+              th:object="${order}"
+              method="POST"
               onsubmit="return validate()"
             >
               <div class="row justify-content-center text-left">
@@ -152,6 +154,7 @@
                     id="fname"
                     name="fname"
                     placeholder="Customer's first name"
+                    th:field="*{customerFirstName}"
                     required
                   />
                 </div>
@@ -166,6 +169,7 @@
                     id="lname"
                     name="lname"
                     placeholder="Customer's last name"
+                    th:field="*{customerLastName}"
                     required
                   />
                 </div>
@@ -180,6 +184,7 @@
                     id="address"
                     name="address"
                     placeholder="Delivery address"
+                    th:field="*{deliveryAddress}"
                   />
                 </div>
                 <div
@@ -195,6 +200,7 @@
                     placeholder="480-123-4567"
                     pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
                     title="Phone number format: 480-123-4567"
+                    th:field="*{customerPhone}"
                     required
                   />
                 </div>
@@ -213,8 +219,9 @@
                     name="pickup_or_delivery"
                     class="custom-select"
                     id="pickup_or_delivery_id"
+                    th:field="*{deliveryOption}"
                   >
-                    <option selected>Deliver</option>
+                    <option value="Delivery" selected>Select Option</option>
                     <option value="Delivery">Deliver</option>
                     <option value="Pick Up">Pick Up</option>
                     <option value="Cater">Full-Service Cater</option>
@@ -230,8 +237,9 @@
                     name="location"
                     class="custom-select"
                     id="location_id"
+                    th:field="*{location}"
                   >
-                    <option selected>Gilbert</option>
+                    <option value="Gilbert" selected>Select Location</option>
                     <option value="Eastmark">Eastmark</option>
                     <option value="Gilbert">Gilbert</option>
                     <option value="Mesa">Mesa</option>
@@ -248,7 +256,8 @@
                   <input
                     id="cateringDate"
                     type="date"
-                    placeholder="mm/dd/yyyy"
+                    value="2022-01-01"
+                    th:field="*{deliveryDate}"
                   />
                 </div>
                 <div
@@ -262,8 +271,8 @@
                   <input
                     id="readyTime"
                     type="time"
-                    placeholder="06:00pm"
-                    value=""
+                    value="18:00"
+                    th:field="*{kitchenReadyTime}"
                   />
                 </div>
               </div>
@@ -279,7 +288,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <tr th:each="cartItem : ${listCartItems}">
+                  <tr th:each="cartItem : ${cart.cartItemList}">
                     <td class="text-right pr-5" th:text="${cartItem.quantity}">Quantity</td>
                     <td class="text-left" th:text="${cartItem.name}">Name</td>
                     <td class="text-right" th:text="${cartItem.priceDisplay}">Price</td>

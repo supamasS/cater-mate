@@ -65,50 +65,29 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @PostMapping("/addToCart/{cart_id}/{menu_item_id}")
+    @PostMapping("/addToCart/{menu_item_id}")
     public String addToCart(
-            @PathVariable(value="cart_id") long cartId,
             @PathVariable(value = "menu_item_id") long menuItemId,
-            @ModelAttribute("cart") Cart modelCart,
+            @ModelAttribute("cart") Cart cart,
             BindingResult bindingResult,
             Model model) {
 
-        System.out.println("adding item " + menuItemId + " to cart " + cartId + " and " + modelCart.getId());
-        Cart cart = cartService.getCartById(cartId);
+//        System.out.println("adding item " + menuItemId + " to cart " + cart.getId());
 
         MenuItem menuItem = menuItemService.getMenuItemById(menuItemId);
 
         CartItem cartItem = new CartItem(cart, menuItem);
 
-        System.out.println("quantity = " + modelCart.getCurrentItemQuantity());
+        cart.addCartItemToCart(cartItem);
 
-        cartItem.setQuantity(modelCart.getCurrentItemQuantity());
-
-        cart.getCartItemList().add(cartItem);
-
-        System.out.println("In cart controller");
-        cart.getCartItemList().forEach(i -> System.out.println(i.getName() + " " + i.getQuantity()));
+//        System.out.println("In cart controller");
+//        cart.getCartItemList().forEach(i -> System.out.println(i.getName() + " " + i.getQuantity()));
 
         cartItemService.saveCartItem(cartItem);
         cartService.saveCart(cart);
 
-        return "redirect:/orderCart/" + cartId;
-    }
-
-    @GetMapping("/orderWithCart")
-    public String doOrderWithCart(
-            @PathVariable(value="cart_id") long cartId,
-            Model model) {
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
-
-        Cart cart = cartService.getCartById(cartId);
-        model.addAttribute("cart", cart);
-
-        model.addAttribute("listCartItems", cart.getCartItemList());
-
-//        System.out.println("In main controller");
-//
-//        cart.getCartItemList().forEach(i -> System.out.println(i.getName() + " " + i.getQuantity()));
+//        model.addAttribute("cart", cart); // already in the model
 
         return "order";
     }
