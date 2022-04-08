@@ -117,8 +117,8 @@
             </thead>
             <tbody>
               <tr th:each="menuItem : ${listMenuItems}">
-                <td th:text="${menuItem.name}"></td>
-                <td th:text="${menuItem.price}"></td>
+                <td class="text-left pl-5" th:text="${menuItem.name}">Name</td>
+                <td class="text-right pr-5" th:text="${menuItem.priceDisplay}">$10.00</td>
                 <td>
                   <a
                     href="update_menu_item.html"

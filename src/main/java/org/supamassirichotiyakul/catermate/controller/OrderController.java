@@ -63,10 +63,9 @@ public class OrderController {
 
     @GetMapping("/deleteOrder/{id}")
     public String delete(@PathVariable(value = "id") long id) {
-
         // call delete order method
         this.orderService.deleteOrderById(id);
-        return "redirect:/order";
+        return "redirect:/viewOrders";
     }
 
     @GetMapping("/order")
