@@ -320,6 +320,11 @@
                   </tbody>
                 </table>
 
+              <!-- Add hidden form fields to handle update, since it creates a new object -->
+<!-- DOES NOT WORK             <input class="form-control" type="hidden" th:field="${order.subTotal}" th:attr="value=${cart.subTotal}"/>-->
+<!--              <input type="hidden" th:field="*{tax}" th:text="${cart.tax}"/>-->
+<!--              <input type="hidden" th:field="*{total}" th:attr="value=${cart.total}"/>-->
+
               <div class="row justify-content-end mt-5">
                 <div class="form-group col-sm-4">
                   <input

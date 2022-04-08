@@ -28,17 +28,17 @@ public class Order {
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    Date deliveryDate;
+    private Date deliveryDate;
 
     @DateTimeFormat(pattern="HH:mm")
     @Temporal(TemporalType.TIME)
-    Date kitchenReadyTime;
+    private Date kitchenReadyTime;
 
-    double subTotal;
+    private double subTotal;
 
-    double tax;
+    private double tax;
 
-    double total;
+    private double total;
 
     @OneToMany(mappedBy = "order", targetEntity = OrderItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<OrderItem> orderItemList;

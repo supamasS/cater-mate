@@ -93,10 +93,11 @@ public class OrderController {
             @RequestParam(name="cart_id", required=true) int cartId,
             @ModelAttribute("order") Order order) {
         Cart cart = cartService.getCartById(cartId);
-        order.setSubTotal(cart.getSubTotal());
-        order.setTax(cart.getTax());
-        order.setTotal(cart.getTotal());
+
+        orderService.copyInfoFromCart( order, cart);
+
         orderService.saveOrder(order);
+
         return "order_submitted";
     }
 }

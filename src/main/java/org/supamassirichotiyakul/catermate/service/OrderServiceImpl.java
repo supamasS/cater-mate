@@ -1,7 +1,9 @@
 package org.supamassirichotiyakul.catermate.service;
 
 import org.supamassirichotiyakul.catermate.exception.OrderNotFoundException;
+import org.supamassirichotiyakul.catermate.model.Cart;
 import org.supamassirichotiyakul.catermate.model.Order;
+import org.supamassirichotiyakul.catermate.model.OrderItem;
 import org.supamassirichotiyakul.catermate.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +13,13 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
+    private OrderItemService orderItemService;
 
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository,
+                            OrderItemService orderItemService) {
         this.orderRepository = orderRepository;
+        this.orderItemService = orderItemService;
     }
 
     @Override
@@ -39,5 +44,18 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteOrderById(long id) {
         orderRepository.deleteById(id);
+    }
+
+    @Override
+    public void copyInfoFromCart(Order order, Cart cart) {
+        cart.getCartItemList().forEach( cartItem -> {
+            OrderItem orderItem = new OrderItem(cartItem);
+            orderItem.setOrder(order);
+            order.getOrderItemList().add(orderItem);
+        });
+
+        order.setSubTotal(cart.getSubTotal());
+        order.setTax(cart.getTax());
+        order.setTotal(cart.getTotal());
     }
 }

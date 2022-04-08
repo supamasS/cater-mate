@@ -1,6 +1,7 @@
 package org.supamassirichotiyakul.catermate.service;
 
 import org.supamassirichotiyakul.catermate.exception.OrderItemNotFoundException;
+import org.supamassirichotiyakul.catermate.model.CartItem;
 import org.supamassirichotiyakul.catermate.model.OrderItem;
 import org.supamassirichotiyakul.catermate.repository.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

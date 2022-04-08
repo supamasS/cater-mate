@@ -30,6 +30,13 @@ public class OrderItem {
     public OrderItem() {
     }
 
+    public OrderItem(CartItem cartItem) {
+        this.menuItemId = cartItem.getMenuItemId();
+        this.name = cartItem.getName();
+        this.price = cartItem.getPrice();
+        this.quantity = cartItem.getQuantity();
+    }
+
     public long getId() {
         return id;
     }
