@@ -29,7 +29,11 @@ public class OrderController {
         this.cartService = cartService;
     }
 
-
+    @GetMapping("/viewOrders")
+    public String getAll(Model model) {
+        model.addAttribute("listOrders", orderService.getAllOrders());
+        return "view_orders";
+    }
 
     @GetMapping("/showNewOrderForm")
     public String showNewForm(Model model) {

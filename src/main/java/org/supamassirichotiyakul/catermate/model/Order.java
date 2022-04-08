@@ -123,6 +123,10 @@ public class Order {
         return subTotal;
     }
 
+    public String getSubTotalDisplay() {
+        return String.format("$%.2f", getSubTotal());
+    }
+
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
@@ -131,12 +135,20 @@ public class Order {
         return tax;
     }
 
+    public String getTaxDisplay() {
+        return String.format("$%.2f", getTax());
+    }
+
     public void setTax(double tax) {
         this.tax = tax;
     }
 
     public double getTotal() {
         return total;
+    }
+
+    public String getTotalDisplay() {
+        return String.format("$%.2f", getTotal());
     }
 
     public void setTotal(double total) {
