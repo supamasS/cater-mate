@@ -73,6 +73,10 @@ public class OrderItem {
         return price;
     }
 
+    public String getPriceDisplay() {
+        return String.format("$%.2f", price);
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -87,5 +91,9 @@ public class OrderItem {
 
     public double getSubTotal() {
         return this.quantity*this.price;
+    }
+
+    public String getSubTotalDisplay() {
+        return String.format("$%.2f", getSubTotal());
     }
 }

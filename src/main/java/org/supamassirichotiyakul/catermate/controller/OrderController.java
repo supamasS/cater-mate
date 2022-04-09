@@ -35,20 +35,20 @@ public class OrderController {
         return "view_orders";
     }
 
-    @GetMapping("/showNewOrderForm")
-    public String showNewForm(Model model) {
-        // create model attribute to bind form data
-        Order order = new Order();
-        model.addAttribute("order", order);
-        return "new_order_item";
-    }
-
-    @PostMapping("/saveOrder")
-    public String save(@ModelAttribute("order") Order order) {
-        // save order to database
-        orderService.saveOrder(order);
-        return "redirect:/order";
-    }
+//    @GetMapping("/showNewOrderForm")
+//    public String showNewForm(Model model) {
+//        // create model attribute to bind form data
+//        Order order = new Order();
+//        model.addAttribute("order", order);
+//        return "new_order_item";
+//    }
+//
+//    @PostMapping("/saveOrder")
+//    public String save(@ModelAttribute("order") Order order) {
+//        // save order to database
+//        orderService.saveOrder(order);
+//        return "redirect:/order";
+//    }
 
     @GetMapping("/showOrderFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
@@ -58,7 +58,9 @@ public class OrderController {
 
         // set order as a model attribute to pre-populate the form
         model.addAttribute("order", order);
-        return "update_order_item";
+        model.addAttribute("itemList", order.getOrderItemList());
+
+        return "update_order";
     }
 
     @GetMapping("/deleteOrder/{id}")
@@ -84,6 +86,7 @@ public class OrderController {
         Cart cart = cartService.getCartById(cartId);
 
         model.addAttribute("cart", cart);
+        model.addAttribute("itemList", cart.getCartItemList());
 
         Order order = new Order();
         model.addAttribute("order", order);
@@ -98,6 +101,14 @@ public class OrderController {
         Cart cart = cartService.getCartById(cartId);
 
         orderService.copyInfoFromCart( order, cart);
+
+        orderService.saveOrder(order);
+
+        return "order_submitted";
+    }
+
+    @PostMapping("/updateOrder")
+    public String updateOrder(@ModelAttribute("order") Order order) {
 
         orderService.saveOrder(order);
 

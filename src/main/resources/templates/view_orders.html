@@ -133,12 +133,12 @@
                 <td class="text-left px-3" th:text="${order.kitchenReadyTime}">18:00</td>
                 <td class="text-right px-3" th:text="${order.totalDisplay}">$100.00</td>
                 <td>
-<!--                  <a-->
-<!--                    href="checkout.html"-->
-<!--                    th:href="@{/checkout/{id}(id=${order.id})}"-->
-<!--                    class="btn btn-primary"-->
-<!--                    >Update</a-->
-<!--                  >-->
+                  <a
+                    href="checkout.html"
+                    th:href="@{/showOrderFormForUpdate/{id}(id=${order.id})}"
+                    class="btn btn-primary"
+                    >Update</a
+                  >
                   <a
                     th:href="@{/deleteOrder/{id}(id=${order.id})}"
                     class="btn btn-outline-danger"

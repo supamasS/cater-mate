@@ -113,12 +113,14 @@
             th:href="@{/users}"
             >Users</a
           >
-          <a class="nav-item nav-link px-5" href="menu.html" th:href="@{/menu}">Menu</a>
+          <a class="nav-item nav-link px-5" href="menu.html" th:href="@{/menu}"
+            >Menu</a
+          >
           <a
-                  class="nav-item nav-link px-5"
-                  href="view_orders.html"
-                  th:href="@{/viewOrders}"
-          >View Orders</a
+            class="nav-item nav-link px-5"
+            href="view_orders.html"
+            th:href="@{/viewOrders}"
+            >View Orders</a
           >
           <a class="nav-item nav-link px-5" href="#">Kitchen</a>
           <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
@@ -143,11 +145,15 @@
               name="orderForm"
               class="form-card"
               action="order_submitted.html"
-              th:action="@{'/order_submitted/?cart_id='+${cart.id}}"
+              th:action="@{/updateOrder}"
               th:object="${order}"
               method="POST"
               onsubmit="return validate()"
             >
+              <!-- Add hidden form fields to handle update, since it creates a new object -->
+              <input type="hidden" th:field="*{id}" />
+              <input type="hidden" th:field="*{orderItemList}" />
+
               <div class="row justify-content-center text-left">
                 <div
                   class="form-group col-12 col-sm-6 col-md-5 flex-column d-flex"
@@ -284,52 +290,73 @@
               </div>
 
               <h2 class="mt-5 mb-5">Order Details</h2>
-                <table id="cart-table" class="table">
-                  <thead>
-                    <tr>
-                      <th>Quantity</th>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <tr th:each="cartItem : ${itemList}">
-                    <td class="text-right pr-5" th:text="${cartItem.quantity}">Quantity</td>
-                    <td class="text-left" th:text="${cartItem.name}">Name</td>
-                    <td class="text-right" th:text="${cartItem.priceDisplay}">Price</td>
-                    <td class="text-right" th:text="${cartItem.subTotalDisplay}">Subtotal</td>
+              <table id="cart-table" class="table">
+                <thead>
+                  <tr>
+                    <th>Quantity</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="item : ${order.orderItemList}">
+                    <td class="text-right pr-5" th:text="${item.quantity}">
+                      Quantity
+                    </td>
+                    <td class="text-left" th:text="${item.name}">Name</td>
+                    <td class="text-right" th:text="${item.priceDisplay}">
+                      Price
+                    </td>
+                    <td class="text-right" th:text="${item.subTotalDisplay}">
+                      Subtotal
+                    </td>
                   </tr>
 
                   <!-- Blank row to space out the summary items-->
-                  <tr><td><br/></td><td><br/></td><td><br/></td><td><br/></td></tr>
+                  <tr>
+                    <td><br /></td>
+                    <td><br /></td>
+                    <td><br /></td>
+                    <td><br /></td>
+                  </tr>
 
                   <!-- Summary -->
+                  <input type="hidden" th:field="*{subTotal}" />
+                  <input type="hidden" th:field="*{tax}" />
+                  <input type="hidden" th:field="*{total}" />
+
                   <tr>
                     <td></td>
                     <td></td>
                     <td class="text-right">Subtotal:</td>
-                    <td class="text-right" th:text="${cart.subTotalDisplay}">$100.00</td>
+                    <td class="text-right" th:text="${order.subTotalDisplay}">
+                      $100.00
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td class="text-right">Tax:</td>
-                    <td class="text-right" th:text="${cart.taxDisplay}">$8.00</td>
+                    <td class="text-right" th:text="${order.taxDisplay}">
+                      $8.00
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td class="text-right">Total:</td>
-                    <td class="text-right" th:text="${cart.totalDisplay}">$108.00</td>
+                    <td class="text-right" th:text="${order.totalDisplay}">
+                      $108.00
+                    </td>
                   </tr>
-                  </tbody>
-                </table>
+                </tbody>
+              </table>
 
               <!-- Add hidden form fields to handle update, since it creates a new object -->
-<!-- DOES NOT WORK             <input class="form-control" type="hidden" th:field="${order.subTotal}" th:attr="value=${cart.subTotal}"/>-->
-<!--              <input type="hidden" th:field="*{tax}" th:text="${cart.tax}"/>-->
-<!--              <input type="hidden" th:field="*{total}" th:attr="value=${cart.total}"/>-->
+              <!-- DOES NOT WORK             <input class="form-control" type="hidden" th:field="${order.subTotal}" th:attr="value=${cart.subTotal}"/>-->
+              <!--              <input type="hidden" th:field="*{tax}" th:text="${cart.tax}"/>-->
+              <!--              <input type="hidden" th:field="*{total}" th:attr="value=${cart.total}"/>-->
 
               <div class="row justify-content-end mt-5">
                 <div class="form-group col-sm-4">
