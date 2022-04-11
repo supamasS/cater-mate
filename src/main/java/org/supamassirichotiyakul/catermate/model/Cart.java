@@ -35,7 +35,7 @@ public class Cart {
     private double total;
 
     public Cart() {
-        // yuyee need to set the user properly
+        // need to set the user properly
 //        userId = 2;
         currentItemQuantity = 1;
         cartItemList = new ArrayList<>();
