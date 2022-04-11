@@ -116,26 +116,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link px-5 active" href="#"
+          <a class="nav-item nav-link active" href="#"
             >Order <span class="sr-only">(current)</span></a
           >
-          <a
-            class="nav-item nav-link px-5"
-            href="users.html"
-            th:href="@{/users}"
+          <a class="nav-item nav-link" href="users.html" th:href="@{/users}"
             >Users</a
           >
-          <a class="nav-item nav-link px-5" href="menu.html" th:href="@{/menu}"
+          <a class="nav-item nav-link" href="menu.html" th:href="@{/menu}"
             >Menu</a
           >
           <a
-                  class="nav-item nav-link px-5"
-                  href="view_orders.html"
-                  th:href="@{/viewOrders}"
-          >View Orders</a
+            class="nav-item nav-link"
+            href="view_orders.html"
+            th:href="@{/viewOrders}"
+            >View Orders</a
           >
-          <a class="nav-item nav-link px-5" href="#">Kitchen</a>
-          <a class="nav-item nav-link px-5" href="index.html" th:href="@{/}"
+          <a class="nav-item nav-link" href="#">Kitchen</a>
+          <a class="nav-item nav-link" href="index.html" th:href="@{/}"
             >Logout</a
           >
         </div>
@@ -144,9 +141,7 @@
 
     <!-- End navbar -->
 
-    <h1 class="display-1 pt-5 mb-5">Cater Mate</h1>
-
-    <!--    <img style="height: 40px; width: 100%" src="../static/images/colorful-mexican-background/3596202.jpg" />-->
+    <h1 class="display-2 pt-5 mb-5">Cater Mate</h1>
 
     <div class="container-fluid px-1 mx-auto">
       <div class="card-deck mx-4">
@@ -162,7 +157,7 @@
               th:each="menuItem : ${listMenuItems}"
             >
               <div
-                class="card"
+                class="card proj-menu-card"
                 data-toggle="modal"
                 th:data-target="${'#exampleModal'+menuItem.id}"
               >
@@ -213,15 +208,14 @@
                         th:object="${cart}"
                         th:method="POST"
                       >
-
                         <!-- Add hidden form fields to handle update, since it creates a new object -->
                         <input type="hidden" th:field="*{id}" />
                         <input type="hidden" th:field="*{cartItemList}" />
 
                         <input
-                                type="number"
-                                th:field="*{currentItemQuantity}"
-                                class="form-control col-4"
+                          type="number"
+                          th:field="*{currentItemQuantity}"
+                          class="form-control col-4"
                         />
 
                         <button
@@ -242,24 +236,29 @@
                 </div>
               </div>
               <!-- Modal -->
-
             </div>
           </div>
         </div>
         <div class="card-1 card col-md-4 col-sm-12 py-4 px-4">
-          <h1>Cart</h1>
+          <h1>Order</h1>
           <hr class="mb-4" />
           <table id="cart-table" class="table">
             <tbody>
               <tr th:each="cartItem : ${cart.cartItemList}">
-                <td class="text-right pr-2" th:text="${cartItem.quantity}">Quantity</td>
+                <td class="text-right pr-2" th:text="${cartItem.quantity}">
+                  Quantity
+                </td>
                 <td class="text-left" th:text="${cartItem.name}">Name</td>
-                <td class="text-right" th:text="${cartItem.subTotalDisplay}">$10.00</td>
+                <td class="text-right" th:text="${cartItem.subTotalDisplay}">
+                  $10.00
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td class="text-right">Subtotal:</td>
-                <td class="text-right" th:text="${cart.subTotalDisplay}">$100.00</td>
+                <td class="text-right" th:text="${cart.subTotalDisplay}">
+                  $100.00
+                </td>
               </tr>
               <tr>
                 <td></td>
@@ -269,7 +268,9 @@
               <tr>
                 <td></td>
                 <td class="text-right">Total:</td>
-                <td class="text-right" th:text="${cart.totalDisplay}">$108.00</td>
+                <td class="text-right" th:text="${cart.totalDisplay}">
+                  $108.00
+                </td>
               </tr>
             </tbody>
           </table>
@@ -280,8 +281,8 @@
             action="checkout.html"
             th:action="@{/checkout/{cart_id}(cart_id=${cart.id})}"
           >
-<!--            action="order_submitted.html"-->
-<!--            th:action="@{/order_submitted}"-->
+            <!--            action="order_submitted.html"-->
+            <!--            th:action="@{/order_submitted}"-->
 
             <div class="row justify-content-end mt-5">
               <div class="form-group col-sm-12">

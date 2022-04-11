@@ -71,6 +71,7 @@ input {
 }
 
 .form-control:focus,
+.form-control:hover,
 input:focus,
 select:focus {
   border: 2px solid #35afc8;
@@ -121,7 +122,45 @@ select:focus {
 }
 
 .navbar {
-  background-color: #fed87e !important;
-/*  padding-left: 100%;
-  padding-right: 100%; */
+  background-color: #FF671D !important;
+  width: 100%;
+}
+
+.navbar-nav {
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 10%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.nav-link.active {
+  color: white !important;
+  border-bottom: solid 2px white;
+}
+
+.proj-menu-card:hover {
+  border-color: #35afc8;
+  cursor: pointer;
+}
+
+.edit {
+  color: #35afc8;
+}
+
+.edit:hover {
+  color: #ffc844;
+}
+
+.delete {
+  color: #FF671D ;
+}
+
+.delete:hover {
+  color: red;
+  cursor: pointer;
 }

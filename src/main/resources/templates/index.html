@@ -55,14 +55,18 @@
 
       #username {
         margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
+        /* border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0; */
       }
 
       #password {
         margin-bottom: 40px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+        /* border-top-left-radius: 0;
+        border-top-right-radius: 0; */
+      }
+
+      .form-control:hover {
+        border-color: #35afc8;
       }
     </style>
 
@@ -84,6 +88,8 @@
           action="order.html"
           th:action="@{/order}"
         >
+          <h2>Sign In</h2>
+          <label class="form-control-label"></label>
           <div class="form-floating">
             <input
               type="text"
@@ -94,6 +100,7 @@
             />
           </div>
           <div class="form-floating">
+            <label class="form-control-label"></label>
             <input
               type="password"
               class="form-control"
@@ -116,23 +123,23 @@
       </div>
     </div>
 
-<!--    <div-->
-<!--      class="card d-flex justify-content-center align-items-center mt-4"-->
-<!--      style="width: 800px; background-color: #fed87e"-->
-<!--    >-->
-<!--      &lt;!&ndash; 560 315 &ndash;&gt;-->
-<!--      <h1>Our Catering Service</h1>-->
-<!--      <iframe-->
-<!--        class="mb-4"-->
-<!--        width="518"-->
-<!--        height="290"-->
-<!--        src="https://www.youtube.com/embed/8Ok82kBI2tQ"-->
-<!--        title="YouTube video player"-->
-<!--        frameborder="0"-->
-<!--        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
-<!--        allowfullscreen-->
-<!--      ></iframe>-->
-<!--    </div>-->
+    <!--    <div-->
+    <!--      class="card d-flex justify-content-center align-items-center mt-4"-->
+    <!--      style="width: 800px; background-color: #fed87e"-->
+    <!--    >-->
+    <!--      &lt;!&ndash; 560 315 &ndash;&gt;-->
+    <!--      <h1>Our Catering Service</h1>-->
+    <!--      <iframe-->
+    <!--        class="mb-4"-->
+    <!--        width="518"-->
+    <!--        height="290"-->
+    <!--        src="https://www.youtube.com/embed/8Ok82kBI2tQ"-->
+    <!--        title="YouTube video player"-->
+    <!--        frameborder="0"-->
+    <!--        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+    <!--        allowfullscreen-->
+    <!--      ></iframe>-->
+    <!--    </div>-->
 
     <script
       type="text/javascript"
