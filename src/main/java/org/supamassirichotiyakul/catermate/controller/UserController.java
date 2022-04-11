@@ -50,7 +50,6 @@ public class UserController {
 
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
-
         // get user from the service
         User user = userService.getUserById(id);
 
@@ -61,7 +60,6 @@ public class UserController {
 
     @GetMapping("/deleteUser/{id}")
     public String delete(@PathVariable(value = "id") long id) {
-
         // call delete user method
         this.userService.deleteUserById(id);
         return "redirect:/users";

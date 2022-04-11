@@ -2,6 +2,8 @@ package org.supamassirichotiyakul.catermate.service;
 
 import org.supamassirichotiyakul.catermate.exception.CartNotFoundException;
 import org.supamassirichotiyakul.catermate.model.Cart;
+import org.supamassirichotiyakul.catermate.model.CartItem;
+import org.supamassirichotiyakul.catermate.model.MenuItem;
 import org.supamassirichotiyakul.catermate.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +13,14 @@ import java.util.List;
 @Service
 public class CartServiceImpl implements CartService {
     private CartRepository cartRepository;
+    private MenuItemService menuItemService;
+    private CartItemService cartItemService;
 
     @Autowired
-    public CartServiceImpl(CartRepository cartRepository) {
+    public CartServiceImpl(CartRepository cartRepository, MenuItemService menuItemService, CartItemService cartItemService) {
         this.cartRepository = cartRepository;
+        this.menuItemService = menuItemService;
+        this.cartItemService = cartItemService;
     }
 
     @Override
@@ -39,5 +45,16 @@ public class CartServiceImpl implements CartService {
     @Override
     public void deleteCartById(long id) {
         cartRepository.deleteById(id);
+    }
+
+    @Override
+    public void addMenuItemToCartById(Cart cart, long menuItemId) {
+        MenuItem menuItem = menuItemService.getMenuItemById(menuItemId);
+
+        CartItem cartItem = cartItemService.getNewCartItemFromMenuItem(menuItem);
+
+        cart.addCartItemToCart(cartItem);
+
+        cartItemService.saveCartItem(cartItem);
     }
 }

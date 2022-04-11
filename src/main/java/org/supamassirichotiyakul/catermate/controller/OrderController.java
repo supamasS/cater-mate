@@ -35,14 +35,6 @@ public class OrderController {
         return "view_orders";
     }
 
-//    @GetMapping("/showNewOrderForm")
-//    public String showNewForm(Model model) {
-//        // create model attribute to bind form data
-//        Order order = new Order();
-//        model.addAttribute("order", order);
-//        return "new_order_item";
-//    }
-//
 //    @PostMapping("/saveOrder")
 //    public String save(@ModelAttribute("order") Order order) {
 //        // save order to database
@@ -52,7 +44,6 @@ public class OrderController {
 
     @GetMapping("/showOrderFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
-
         // get order from the service
         Order order = orderService.getOrderById(id);
 
@@ -73,7 +64,7 @@ public class OrderController {
     @GetMapping("/order")
     public String doOrder(Model model) {
         Cart cart = new Cart();
-        cartService.saveCart(cart); // need to save to create a new id??
+        cartService.saveCart(cart); // need to save to create a new id
 
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
         model.addAttribute("cart", cart);
@@ -94,22 +85,22 @@ public class OrderController {
         return "checkout";
     }
 
-    @PostMapping("/order_submitted")
+    @PostMapping("/orderSubmitted")
     public String doOrderSubmitted(
             @RequestParam(name="cart_id", required=true) int cartId,
             @ModelAttribute("order") Order order) {
         Cart cart = cartService.getCartById(cartId);
 
-        orderService.copyInfoFromCart( order, cart);
+        orderService.copyInfoFromCart(order, cart);
 
         orderService.saveOrder(order);
 
         return "order_submitted";
     }
 
+    // This is from when the order was updated, no need to copy the cart items to order items
     @PostMapping("/updateOrder")
     public String updateOrder(@ModelAttribute("order") Order order) {
-
         orderService.saveOrder(order);
 
         return "order_submitted";

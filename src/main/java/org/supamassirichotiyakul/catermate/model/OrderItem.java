@@ -73,10 +73,6 @@ public class OrderItem {
         return price;
     }
 
-    public String getPriceDisplay() {
-        return String.format("$%.2f", price);
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -87,6 +83,11 @@ public class OrderItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    // ------------ custom methods start here ------------
+    public String getPriceDisplay() {
+        return String.format("$%.2f", price);
     }
 
     public double getSubTotal() {

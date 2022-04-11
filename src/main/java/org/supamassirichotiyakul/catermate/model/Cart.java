@@ -72,37 +72,25 @@ public class Cart {
         return subTotal;
     }
 
-    public String getSubTotalDisplay() {
-        return String.format("$%.2f", getSubTotal());
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
     }
-
-//    public void setSubTotal(double subTotal) {
-//        this.subTotal = subTotal;
-//    }
 
     public double getTax() {
         return getSubTotal() * SALES_TAX;
     }
 
-    public String getTaxDisplay() {
-        return String.format("$%.2f", getTax());
+    public void setTax(double tax) {
+        this.tax = tax;
     }
-
-//    public void setTax(double tax) {
-//        this.tax = tax;
-//    }
 
     public double getTotal() {
         return getSubTotal() + getTax();
     }
 
-    public String getTotalDisplay() {
-        return String.format("$%.2f", getTotal());
+    public void setTotal(double total) {
+        this.total = total;
     }
-
-//    public void setTotal(double total) {
-//        this.total = total;
-//    }
 
     public List<CartItem> getCartItemList() {
         return cartItemList;
@@ -112,7 +100,23 @@ public class Cart {
         this.cartItemList = cartItemList;
     }
 
+    // ------------ custom methods start here ------------
+    public String getSubTotalDisplay() {
+        return String.format("$%.2f", getSubTotal());
+    }
+
+    public String getTaxDisplay() {
+        return String.format("$%.2f", getTax());
+    }
+
+    public String getTotalDisplay() {
+        return String.format("$%.2f", getTotal());
+    }
+
     public void addCartItemToCart(CartItem cartItem) {
-        this.cartItemList.add(cartItem);
+        cartItem.setCart(this);
+        cartItem.setQuantity(this.getCurrentItemQuantity());
+        this.getCartItemList().add(cartItem);
+        this.setCurrentItemQuantity(1);
     }
 }

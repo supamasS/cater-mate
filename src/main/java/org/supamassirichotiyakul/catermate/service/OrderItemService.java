@@ -1,6 +1,5 @@
 package org.supamassirichotiyakul.catermate.service;
 
-import org.supamassirichotiyakul.catermate.model.CartItem;
 import org.supamassirichotiyakul.catermate.model.OrderItem;
 
 import java.util.List;

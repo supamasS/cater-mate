@@ -1,8 +1,6 @@
 package org.supamassirichotiyakul.catermate.controller;
 
 import org.supamassirichotiyakul.catermate.model.Cart;
-import org.supamassirichotiyakul.catermate.model.CartItem;
-import org.supamassirichotiyakul.catermate.model.MenuItem;
 import org.supamassirichotiyakul.catermate.service.CartItemService;
 import org.supamassirichotiyakul.catermate.service.CartService;
 import org.supamassirichotiyakul.catermate.service.MenuItemService;
@@ -25,45 +23,45 @@ public class CartController {
         this.cartItemService = cartItemService;
     }
 
-    @GetMapping("/cart")
-    public String getAll(Model model) {
-        model.addAttribute("listCarts", cartService.getAllCarts());
-        return "cart";
-    }
-
-    @GetMapping("/showNewCartForm")
-    public String showNewForm(Model model) {
-        // create model attribute to bind form data
-        Cart cart = new Cart();
-        model.addAttribute("cart", cart);
-        return "new_cart_item";
-    }
-
-    @PostMapping("/saveCart")
-    public String save(@ModelAttribute("cart") Cart cart) {
-        // save cart to database
-        cartService.saveCart(cart);
-        return "redirect:/cart";
-    }
-
-    @GetMapping("/showCartFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
-
-        // get cart from the service
-        Cart cart = cartService.getCartById(id);
-
-        // set cart as a model attribute to pre-populate the form
-        model.addAttribute("cart", cart);
-        return "update_cart_item";
-    }
-
-    @GetMapping("/deleteCart/{id}")
-    public String delete(@PathVariable(value = "id") long id) {
-
-        // call delete cart method
-        this.cartService.deleteCartById(id);
-        return "redirect:/cart";
-    }
+//    @GetMapping("/cart")
+//    public String getAll(Model model) {
+//        model.addAttribute("listCarts", cartService.getAllCarts());
+//        return "cart";
+//    }
+//
+//    @GetMapping("/showNewCartForm")
+//    public String showNewForm(Model model) {
+//        // create model attribute to bind form data
+//        Cart cart = new Cart();
+//        model.addAttribute("cart", cart);
+//        return "new_cart_item";
+//    }
+//
+//    @PostMapping("/saveCart")
+//    public String save(@ModelAttribute("cart") Cart cart) {
+//        // save cart to database
+//        cartService.saveCart(cart);
+//        return "redirect:/cart";
+//    }
+//
+//    @GetMapping("/showCartFormForUpdate/{id}")
+//    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
+//
+//        // get cart from the service
+//        Cart cart = cartService.getCartById(id);
+//
+//        // set cart as a model attribute to pre-populate the form
+//        model.addAttribute("cart", cart);
+//        return "update_cart_item";
+//    }
+//
+//    @GetMapping("/deleteCart/{id}")
+//    public String delete(@PathVariable(value = "id") long id) {
+//
+//        // call delete cart method
+//        this.cartService.deleteCartById(id);
+//        return "redirect:/cart";
+//    }
 
     @PostMapping("/addToCart/{menu_item_id}")
     public String addToCart(
@@ -72,18 +70,8 @@ public class CartController {
             BindingResult bindingResult,
             Model model) {
 
-//        System.out.println("adding item " + menuItemId + " to cart " + cart.getId());
+        cartService.addMenuItemToCartById(cart, menuItemId);
 
-        MenuItem menuItem = menuItemService.getMenuItemById(menuItemId);
-
-        CartItem cartItem = new CartItem(cart, menuItem);
-
-        cart.addCartItemToCart(cartItem);
-
-//        System.out.println("In cart controller");
-//        cart.getCartItemList().forEach(i -> System.out.println(i.getName() + " " + i.getQuantity()));
-
-        cartItemService.saveCartItem(cartItem);
         cartService.saveCart(cart);
 
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
@@ -91,4 +79,6 @@ public class CartController {
 
         return "order";
     }
+
+
 }

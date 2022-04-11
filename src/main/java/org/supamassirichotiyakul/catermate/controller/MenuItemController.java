@@ -42,7 +42,6 @@ public class MenuItemController {
 
     @GetMapping("/showMenuItemFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
-
         // get menuItem from the service
         MenuItem menuItem = menuItemService.getMenuItemById(id);
 
@@ -53,7 +52,6 @@ public class MenuItemController {
 
     @GetMapping("/deleteMenuItem/{id}")
     public String delete(@PathVariable(value = "id") long id) {
-
         // call delete menuItem method
         this.menuItemService.deleteMenuItemById(id);
         return "redirect:/menu";

@@ -28,22 +28,7 @@ public class CartItem {
     @NotNull
     private int quantity;
 
-//    @Transient
-//    private double subTotal;
-
-
     public CartItem() {
-    }
-
-    public CartItem(Cart cart, MenuItem menuItem) {
-        this.cart = cart;
-        this.menuItemId = menuItem.getId();
-        this.name = menuItem.getName();
-        this.price = menuItem.getPrice();
-
-//        System.out.println("quantity = " + cart.getCurrentItemQuantity());
-        this.quantity = cart.getCurrentItemQuantity();
-        cart.setCurrentItemQuantity(1);     // clear it back to 1 for the next item user wants to add
     }
 
     public long getId() {
@@ -82,10 +67,6 @@ public class CartItem {
         return price;
     }
 
-    public String getPriceDisplay() {
-        return String.format("$%.2f", getPrice());
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -98,6 +79,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    // ------------ custom methods start here ------------
+    public String getPriceDisplay() {
+        return String.format("$%.2f", getPrice());
+    }
+
     public double getSubTotal() {
         return this.quantity*this.price;
     }
@@ -106,7 +92,15 @@ public class CartItem {
         return String.format("$%.2f", getSubTotal());
     }
 
-//    public void setSubTotal(double subTotal) {
-//        this.subTotal = subTotal;
+//    public CartItem(Cart cart, MenuItem menuItem) {
+//        this.cart = cart;
+//        this.menuItemId = menuItem.getId();
+//        this.name = menuItem.getName();
+//        this.price = menuItem.getPrice();
+//
+////        System.out.println("quantity = " + cart.getCurrentItemQuantity());
+//        this.quantity = cart.getCurrentItemQuantity();
+//        cart.setCurrentItemQuantity(1);     // clear it back to 1 for the next item user wants to add
 //    }
+
 }

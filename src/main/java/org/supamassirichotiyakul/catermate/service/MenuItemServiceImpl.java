@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MenuServiceImpl implements MenuItemService {
+public class MenuItemServiceImpl implements MenuItemService {
     private MenuItemRepository menuItemRepository;
 
     @Autowired
-    public MenuServiceImpl(MenuItemRepository menuItemRepository) {
+    public MenuItemServiceImpl(MenuItemRepository menuItemRepository) {
         this.menuItemRepository = menuItemRepository;
     }
 

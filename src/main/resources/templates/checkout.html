@@ -142,7 +142,7 @@
               name="orderForm"
               class="form-card"
               action="order_submitted.html"
-              th:action="@{'/order_submitted/?cart_id='+${cart.id}}"
+              th:action="@{'/orderSubmitted/?cart_id='+${cart.id}}"
               th:object="${order}"
               method="POST"
               onsubmit="return validate()"

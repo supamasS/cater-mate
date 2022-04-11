@@ -1,8 +1,5 @@
 package org.supamassirichotiyakul.catermate.model;
 
-
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,11 +41,12 @@ public class MenuItem {
         return price;
     }
 
-    public String getPriceDisplay() {
-        return String.format("$%.2f", price);
-    }
-
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    // ------------ custom methods start here ------------
+    public String getPriceDisplay() {
+        return String.format("$%.2f", price);
     }
 }

@@ -9,4 +9,5 @@ public interface CartService {
     void saveCart(Cart cart);
     Cart getCartById(long id);
     void deleteCartById(long id);
+    void addMenuItemToCartById(Cart cart, long menuItemId);
 }
