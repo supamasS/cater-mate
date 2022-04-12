@@ -1,6 +1,11 @@
 # cater-mate
 ## Food catering app
 
+## Daily Progress
+- April 12th (70% done)
+  - add Spring security login from class example - still need to style registration.html page 
+    and merge the old User class and related code to the example User class
+
 ### Login
 - As an admin, I want to log in with an admin privilege so that I can edit the list of items in the menu, update 
 the price, etc. 
