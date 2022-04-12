@@ -1,7 +1,5 @@
 package org.supamassirichotiyakul.catermate.controller;
 
-import org.supamassirichotiyakul.catermate.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +14,21 @@ public class MainController {
 //        this.userService = userService;
 //    }
 
-    @GetMapping("/")
-    public String doLogin(Model model) {
-        return "index";
+
+
+    // *** This is the MAIN page when http://localhost:8080
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
     }
+
+//    @GetMapping("/")
+//    public String doLogin(Model model) {
+//        return "redirect:/order";
+//    }
+//
+//    @GetMapping("/user")
+//    public String userIndex() {
+//        return "user/index";
+//    }
 }
