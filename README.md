@@ -2,6 +2,11 @@
 ## Food catering app
 
 ## Daily Progress
+- April 14th (75% done)
+  - created a MenuItemServiceImpl bean using @Bean annotation (to satisfy a Capstone requirement)
+  - finished styling registration page
+  - merged the old User class to Spring security login User class
+
 - April 12th (70% done)
   - add Spring security login from class example - still need to style registration.html page 
     and merge the old User class and related code to the example User class

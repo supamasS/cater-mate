@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+// Make this a manually created bean to satisfy the capstone requirement
+//@Service
 public class MenuItemServiceImpl implements MenuItemService {
     private MenuItemRepository menuItemRepository;
 
