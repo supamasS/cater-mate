@@ -1,19 +1,32 @@
 package org.supamassirichotiyakul.catermate.security;
 
 import javax.persistence.*;
-import java.util.Collection;
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Supamas changed
     private Long id;
 
-    private String firstName;
-    private String lastName;
+    @NotNull
+//    @Size(min=2, max=50)
     private String email;
+
+    @NotNull
+//    @Size(min=2, max=50)
+    private String firstName;
+
+    @NotNull
+//    @Size(min=2, max=50)
+    private String lastName;
+
+    @NotNull
+//    @Size(min=2, max=50)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -23,7 +36,7 @@ public class User {
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private Set<Role> roleSet = new HashSet<>();
 
     public User() {
     }
@@ -35,12 +48,12 @@ public class User {
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.roleSet = roles;
     }
 
     public Long getId() {
@@ -83,24 +96,28 @@ public class User {
         this.password = password;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
+    public Set<Role> getRoleSet() {
+        return roleSet;
     }
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
+    public void setRoleSet(Set<Role> roleSet) {
+        this.roleSet = roleSet;
     }
 
-    @Override
-    public String toString() {
-        return "com.example.demo.security.User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + "*********" + '\'' +
-                ", roles=" + roles +
-                '}';
+    public void addRole(Role role) {
+        this.roleSet.add(role);
     }
+
+//    @Override
+//    public String toString() {
+//        return "com.example.demo.security.User{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", email='" + email + '\'' +
+//                ", password='" + "*********" + '\'' +
+//                ", roles=" + roleSet +
+//                '}';
+//    }
 }
 

@@ -99,7 +99,8 @@
             <label for="firstName" class="form-control-label">First name</label>
             <input
               id="firstName"
-              class="form-control"
+              class="form-control text-center"
+              autofocus="autofocus"
               th:field="*{firstName}"
             />
             <p
@@ -115,7 +116,11 @@
             th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''"
           >
             <label for="lastName" class="form-control-label"> Last name </label>
-            <input id="lastName" class="form-control" th:field="*{lastName}" />
+            <input
+              id="lastName"
+              class="form-control text-center"
+              th:field="*{lastName}"
+            />
             <p
               class="error-message"
               th:each="error : ${#fields.errors('lastName')}"
@@ -129,7 +134,11 @@
             th:classappend="${#fields.hasErrors('email')}? 'has-error':''"
           >
             <label for="email" class="form-control-label"> E-mail </label>
-            <input id="email" class="form-control" th:field="*{email}" />
+            <input
+              id="email"
+              class="form-control text-center"
+              th:field="*{email}"
+            />
             <p
               class="error-message"
               th:each="error : ${#fields.errors('email')}"
@@ -147,7 +156,7 @@
             </label>
             <input
               id="confirmEmail"
-              class="form-control"
+              class="form-control text-center"
               th:field="*{confirmEmail}"
             />
             <p
@@ -165,7 +174,7 @@
             <label for="password" class="form-control-label"> Password </label>
             <input
               id="password"
-              class="form-control"
+              class="form-control text-center"
               type="password"
               th:field="*{password}"
             />
@@ -186,7 +195,7 @@
             </label>
             <input
               id="confirmPassword"
-              class="form-control"
+              class="form-control text-center"
               type="password"
               th:field="*{confirmPassword}"
             />

@@ -1,22 +1,31 @@
 package org.supamassirichotiyakul.catermate.security;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Supamas changed
     private Long id;
+
+    @NotNull
+//    @Size(min=1, max=50)
     private String name;
 
+    @ManyToMany(mappedBy = "roleSet")                         // Supamas added
+    private Set<User> users = new HashSet<>();
+
     public Role() {
+        System.out.println("Role: no args constructor");
     }
 
     public Role(String name) {
         this.name = name;
+        System.out.println("Role: all args constructor");
     }
     public Long getId() {
         return id;
@@ -33,12 +42,20 @@ public class Role {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "com.example.demo.security.Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public Set<User> getUsers() {
+        return users;
     }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "com.example.demo.security.Role{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                '}';
+//    }
 }
 

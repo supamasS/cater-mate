@@ -81,39 +81,87 @@
           <form
             class="d-flex flex-column align-items-center p-3"
             action="users.html"
-            th:action="@{/saveUser}"
+            th:action="@{/saveUser/{id}(id=${user.id})}"
             th:method="POST"
             th:object="${user}"
           >
-            <!-- method="POST" -->
-            <!-- Add hidden form field to handle update -->
-            <input type="hidden" th:field="*{id}" />
+            <!-- Add all hidden form fields to handle update -->
+<!--            <input type="hidden" th:field="*{id}" />-->
+            <input type="hidden" th:field="*{password}" />
+<!--            <input th:field="*{roleSet}" />-->
 
-            <input
+            <div class="form-group col-6">
+              <label for="firstName" class="form-control-label"
+                >First name</label
+              >
+              <input
+                id="firstName"
+                class="form-control text-center"
+                th:field="*{firstName}"
+                placeholder="First Name"
+              />
+            </div>
+
+            <!-- <input
               type="text"
               th:field="*{firstName}"
               class="form-control mb-4 col-4"
-            />
+            /> -->
 
-            <input
+            <div class="form-group col-6">
+              <label for="lastName" class="form-control-label">
+                Last name
+              </label>
+              <input
+                id="lastName"
+                class="form-control text-center"
+                th:field="*{lastName}"
+                placeholder="Last Name"
+              />
+            </div>
+
+            <!-- <input
               type="text"
               th:field="*{lastName}"
               class="form-control mb-4 col-4"
-            />
+            /> -->
 
-            <input
+            <div class="form-group col-6">
+              <label for="email" class="form-control-label"> E-mail </label>
+              <input
+                id="email"
+                class="form-control text-center"
+                th:field="*{email}"
+                placeholder="Email"
+              />
+            </div>
+
+            <!-- <input
               type="text"
-              th:field="*{userName}"
+              th:field="*{email}"
               class="form-control mb-4 col-4"
-            />
+            /> -->
 
-            <input
+            <!-- <div class="form-group col-6">
+              <label for="password" class="form-control-label">
+                Password
+              </label>
+              <input
+                id="password"
+                class="form-control text-center"
+                type="password"
+                th:field="*{password}"
+                placeholder="Password"
+              />
+            </div> -->
+
+            <!-- <input
               type="text"
               th:field="*{password}"
               class="form-control mb-4 col-4"
-            />
+            /> -->
 
-            <select
+            <!-- <select
               name="privilege"
               class="custom-select form-control text-center mb-4 col-4"
               id="privilege"
@@ -122,11 +170,16 @@
               <option value="User">Select Privilege</option>
               <option value="User">User</option>
               <option value="Admin">Admin</option>
-            </select>
+            </select> -->
 
-            <button type="submit" class="btn btn-info col-2 mt-3 mb-5">
-              Update User
-            </button>
+            <div class="form-group col-6 my-5">
+              <button type="submit" class="w-100 btn btn-primary btn-block">
+                Update User
+              </button>
+            </div>
+
+            <!-- <button type="submit" class="btn btn-info col-2 mt-3 mb-5">
+            </button> -->
           </form>
         </div>
       </div>

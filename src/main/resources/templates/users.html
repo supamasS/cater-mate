@@ -104,13 +104,13 @@
         <h2>Users List</h2>
         <hr class="ml-5 mr-5" />
         <div class="d-flex justify-content-begin mt-3 ml-5">
-          <a
-            href="new_user.html"
-            th:href="@{/showNewUserForm}"
+          <!-- <a
+            href="registration.html"
+            th:href="@{/registration}"
             class="btn btn-primary mb-4"
           >
             <i class="fa fa-plus mr-1"></i> Add User
-          </a>
+          </a> -->
         </div>
 
         <div class="ml-5 mr-5">
@@ -119,19 +119,19 @@
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>User Name</th>
-                <th>Password</th>
-                <th>Privilege</th>
+                <th>Email</th>
+<!--                <th>Password</th>-->
+                <!-- <th>Privilege</th> -->
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="user : ${listUsers}">
-                <td th:text="${user.firstName}"></td>
-                <td th:text="${user.lastName}"></td>
-                <td th:text="${user.userName}"></td>
-                <td th:text="${user.password}"></td>
-                <td th:text="${user.privilege}"></td>
+                <td class="px-3" th:text="${user.firstName}">First Name</td>
+                <td class="px-3" th:text="${user.lastName}">Last Name</td>
+                <td class="px-3" th:text="${user.email}">Email</td>
+<!--                <td class="px-3" th:text="${user.password}">Password</td>-->
+                <!-- <td th:text="${user.privilege}"></td> -->
                 <td>
                   <!-- <a
                     href="update_user.html"
