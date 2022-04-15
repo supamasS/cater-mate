@@ -4,7 +4,10 @@
 ## Daily Progress
 - April 15th (80% done)
   - add ADMIN, SUPERADMIN roles and have permission set for "/users" as accessible by SUPERADMIN and "/menu" and 
-    "/viewOrders" are for ADMIN & SUPERADMIN, also added 3 error html pages - 403, 404, and 500 errors.
+    "/viewOrders" are for ADMIN & SUPERADMIN
+  - any user with first name starting with "admin" will be assigned "ROLE_USER" and "ROLE_ADMIN" role
+  - any user with first name starting with "superadmin" will be assigned "ROLE_USER", "ROLE_ADMIN", and "SUPERADMIN" role
+  - added 3 error html pages - 403, 404, and 500 errors under "templates/error" folder.
   - add 3 custom queries for Order class and add search boxes in "View Orders" page (currently all 3 searches are "OR" 
     together)
   - TODO: style 3 search boxes so they align
@@ -36,12 +39,14 @@ the price, etc.
     1. Same as for admin login a-e 
     2. If login is successful, show the screen for ordering.
 
+## User Stories
 
 ### User
 - As a user, I want to add each item in the order, in terms of name, options, and quantity.
 
 - As a user, I want to see the total amount as I add each item so that I can tell the customer if needed.
 
+#### Not implemented in this version:
 - As a user, I want to have the kitchen pick sheet automatically created after I place an order.
 
 - As a user, I want to create an invoice as a pdf file so that I can send it to the customer.
@@ -52,7 +57,7 @@ for the kitchen.
 ### Admin
 - As an admin, I want to view all the items on the menu listed with the price.
 
-- As an admin, I want to search the menu based on keyword.
+- As an admin, I want to search the menu based on customer name, date, and location.
 
 - As an admin, I want to create a new menu item so that it's available on the menu.
 
@@ -60,8 +65,9 @@ for the kitchen.
 
 - As an admin, I want to delete a menu item so that it is no longer on the menu.
 
-- As an admin, I want to view the quantity ordered for each menu item so I know which item is popular.
+#### Not implemented in this version:
 
+- As an admin, I want to view the quantity ordered for each menu item so I know which item is popular.
 
 - As an admin, I want to add a new ingredient so that it can be used as part of an item in the menu.
 

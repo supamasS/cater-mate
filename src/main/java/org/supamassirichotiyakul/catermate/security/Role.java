@@ -20,13 +20,12 @@ public class Role {
     private Set<User> users = new HashSet<>();
 
     public Role() {
-        System.out.println("Role: no args constructor");
     }
 
     public Role(String name) {
         this.name = name;
-        System.out.println("Role: all args constructor");
     }
+
     public Long getId() {
         return id;
     }
