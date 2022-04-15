@@ -2,6 +2,13 @@
 ## Food catering app
 
 ## Daily Progress
+- April 15th (80% done)
+  - add ADMIN, SUPERADMIN roles and have permission set for "/users" as accessible by SUPERADMIN and "/menu" and 
+    "/viewOrders" are for ADMIN & SUPERADMIN, also added 3 error html pages - 403, 404, and 500 errors.
+  - add 3 custom queries for Order class and add search boxes in "View Orders" page (currently all 3 searches are "OR" 
+    together)
+  - TODO: style 3 search boxes so they align
+  
 - April 14th (75% done)
   - created a MenuItemServiceImpl bean using @Bean annotation (to satisfy a Capstone requirement)
   - finished styling registration page

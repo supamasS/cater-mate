@@ -20,6 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests()
+                .antMatchers("/users").hasAnyRole("SUPERADMIN")
+                .antMatchers("/menu", "/viewOrders").hasAnyRole("ADMIN", "SUPERADMIN")
                     .antMatchers(
                         "/registration**",
                         "/js/**",
