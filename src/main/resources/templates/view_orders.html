@@ -100,13 +100,85 @@
       <div class="card">
         <h2>Orders List</h2>
         <hr class="ml-5 mr-5" />
+
+        <h2 class="text-left mx-5 my-3">Search</h2>
+        <form
+          name="searchForm"
+          class="form-card mx-5"
+          action="view_orders.html"
+          th:action="@{/findOrders}"
+          th:object="${queryObj}"
+          method="POST"
+        >
+          <div class="row justify-content-center text-left">
+            <div class="form-group col-12 col-sm-5 col-md-4 flex-column d-flex">
+              <label class="form-control-label">First or Last Name</label>
+              <input
+                type="text"
+                id="q_name"
+                name="q_name"
+                placeholder="Customer's first or last name"
+                th:field="*{queryName}"
+              />
+            </div>
+
+            <div class="form-group col-12 col-sm-5 col-md-3 flex-column d-flex">
+              <label class="form-control-label">Location</label>
+              <select
+                name="q_location"
+                class="custom-select"
+                id="q_location_id"
+                th:field="*{queryLocation}"
+              >
+                <option value="" selected>Select Location</option>
+                <option value="Eastmark">Eastmark</option>
+                <option value="Gilbert">Gilbert</option>
+                <option value="Mesa">Mesa</option>
+              </select>
+            </div>
+
+            <div class="form-group col-12 col-sm-5 col-md-3 flex-column d-flex">
+              <label class="form-control-label">Catering Date</label>
+              <input
+                id="q_delivery_date"
+                type="date"
+                value="2022-01-01"
+                th:field="*{queryDeliveryDate}"
+              />
+            </div>
+
+            <div class="form-group col-2 mt-4">
+              <button type="submit" class="w-100 btn btn-primary btn-block">
+                <i class="fa fa-search mr-1"></i> Search
+              </button>
+            </div>
+
+            <!-- <div class="form-group col-12 col-sm-5 col-md-2 flex-column d-flex"> -->
+            <!--  <label class="form-control-label"></label> -->
+            <!-- class="border-none search mt-3 pt-3" -->
+            <!-- <input
+              class="btn btn-block btn-primary"
+
+              title="Search"
+              data-toggle="tooltip"
+              href="view_orders.html"
+              th:href="@{/findOrder}"
+            >
+              <span class="material-icons"> search </span> -->
+            <!-- </div> -->
+          </div>
+        </form>
+        <!-- End search box -->
+
+        <hr class="ml-5 mr-5" />
+
         <div class="d-flex justify-content-begin mt-3 ml-5">
           <a href="order.html" th:href="@{/order}" class="btn btn-primary mb-4">
             <i class="fa fa-plus mr-1"></i> Add Order
           </a>
         </div>
 
-        <div class="ml-5 mr-5">
+        <div class="mx-5 pb-4">
           <table class="table table-bordered table-responsive-md mx-auto">
             <thead>
               <tr>

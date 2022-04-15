@@ -8,6 +8,7 @@ import org.supamassirichotiyakul.catermate.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -57,5 +58,20 @@ public class OrderServiceImpl implements OrderService {
         order.setSubTotal(cart.getSubTotal());
         order.setTax(cart.getTax());
         order.setTotal(cart.getTotal());
+    }
+
+    @Override
+    public List<Order> findByCustomerFirstNameContainingOrCustomerLastNameContaining(String firstNameInfix, String lastNameInfix) {
+        return orderRepository.findByCustomerFirstNameContainingOrCustomerLastNameContaining(firstNameInfix, lastNameInfix);
+    }
+
+    @Override
+    public List<Order> findByDeliveryDateEquals(Date deliveryDate) {
+        return orderRepository.findByDeliveryDateEquals(deliveryDate);
+    }
+
+    @Override
+    public List<Order> findByLocationContaining(String locationInfix) {
+        return orderRepository.findByLocationContaining(locationInfix);
     }
 }

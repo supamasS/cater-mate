@@ -3,6 +3,7 @@ package org.supamassirichotiyakul.catermate.controller;
 import org.springframework.web.bind.annotation.*;
 import org.supamassirichotiyakul.catermate.model.Cart;
 import org.supamassirichotiyakul.catermate.model.Order;
+import org.supamassirichotiyakul.catermate.model.QueryObj;
 import org.supamassirichotiyakul.catermate.service.CartService;
 import org.supamassirichotiyakul.catermate.service.OrderItemService;
 import org.supamassirichotiyakul.catermate.service.OrderService;
@@ -10,6 +11,9 @@ import org.supamassirichotiyakul.catermate.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class OrderController {
@@ -32,6 +36,7 @@ public class OrderController {
     @GetMapping("/viewOrders")
     public String getAll(Model model) {
         model.addAttribute("listOrders", orderService.getAllOrders());
+        model.addAttribute("queryObj", new QueryObj());
         return "view_orders";
     }
 
@@ -69,6 +74,21 @@ public class OrderController {
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
         model.addAttribute("cart", cart);
 
+//        System.out.println("----- custom query 1 -----");
+//        orderService.findByCustomerFirstNameOrCustomerLastNameContaining("am").forEach(o ->  System.out.println(o.toString()));
+//
+//        System.out.println("----- custom query 2 -----");
+//        try {
+//            orderService.findByDeliveryDateEquals(new SimpleDateFormat
+//                    ("yyyy-MM-dd").parse("2022-04-16")).forEach(o ->  System.out.println(o.toString()));
+//        } catch (ParseException e) {
+//            System.out.println("Error parsing date");
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("----- custom query 3 -----");
+//        orderService.findByLocationContaining("Gilbert").forEach(o -> System.out.println(o.toString()));
+
         return "order";
     }
 
@@ -104,5 +124,30 @@ public class OrderController {
         orderService.saveOrder(order);
 
         return "order_submitted";
+    }
+
+    @PostMapping("/findOrders")
+    public String findOrders(@ModelAttribute QueryObj queryObj, Model model) {
+        System.out.println("qName is " + queryObj.getQueryName());
+
+        Set<Order> orderSet = new HashSet<>();
+
+        if(!queryObj.getQueryName().isEmpty()) {
+            String name = queryObj.getQueryName();
+            orderSet.addAll(orderService.findByCustomerFirstNameContainingOrCustomerLastNameContaining(name, name));
+        }
+
+        if(!queryObj.getQueryLocation().isEmpty()){
+            orderSet.addAll(orderService.findByLocationContaining(queryObj.getQueryLocation()));
+        }
+
+        if(queryObj.getQueryDeliveryDate() != null){
+            orderSet.addAll(orderService.findByDeliveryDateEquals(queryObj.getQueryDeliveryDate()));
+        }
+
+        model.addAttribute("listOrders", orderSet);
+        model.addAttribute("queryObj", new QueryObj());
+
+        return "view_orders";
     }
 }

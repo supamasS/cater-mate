@@ -151,6 +151,25 @@ public class Order {
         this.orderItemList = orderItemList;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customerFirstName='" + customerFirstName + '\'' +
+                ", customerLastName='" + customerLastName + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", deliveryOption='" + deliveryOption + '\'' +
+                ", location='" + location + '\'' +
+                ", deliveryDate=" + deliveryDate +
+                ", kitchenReadyTime=" + kitchenReadyTime +
+                ", subTotal=" + subTotal +
+                ", tax=" + tax +
+                ", total=" + total +
+                ", orderItemList=" + orderItemList +
+                '}';
+    }
+
     // ------------ custom methods start here ------------
     public String getSubTotalDisplay() {
         return String.format("$%.2f", getSubTotal());
