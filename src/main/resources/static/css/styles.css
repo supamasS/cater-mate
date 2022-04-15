@@ -98,6 +98,10 @@ select:focus {
   color: #35afc8;
 }
 
+.color-alert {
+  color: #FF671D;
+}
+
 .navbar {
   background-color: #FF671D !important;
   width: 100%;

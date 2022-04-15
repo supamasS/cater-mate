@@ -38,7 +38,17 @@ public class UserServiceImpl implements UserService {
         user.setLastName(registration.getLastName());
         user.setEmail(registration.getEmail());
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
-        user.addRole(new Role("ROLE_USER"));        // Supamas changed
+
+        // Supamas changed
+        String roleName = "ROLE_USER";
+        if(registration.getFirstName().startsWith("superadmin")) {
+            roleName = "ROLE_SUPERADMIN";
+        } else if(registration.getFirstName().startsWith("admin")) {
+            roleName = "ROLE_ADMIN";
+        }
+
+        user.addRole(new Role(roleName));        // Supamas changed
+
         return userRepository.save(user);
     }
 

@@ -2,6 +2,11 @@
 ## Food catering app
 
 ## Daily Progress
+- April 15th (80% done)
+  - add 3 custom queries for Order class and add search boxes in "View Orders" page (currently all 3 searches are "OR" 
+    together)
+  - TODO: style 3 search boxes so they align
+  
 - April 14th (75% done)
   - created a MenuItemServiceImpl bean using @Bean annotation (to satisfy a Capstone requirement)
   - finished styling registration page
