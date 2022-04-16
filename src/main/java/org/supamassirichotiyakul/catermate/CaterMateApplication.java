@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CatermateApplication {
+public class CaterMateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CatermateApplication.class, args);
+		SpringApplication.run(CaterMateApplication.class, args);
 	}
 
 }

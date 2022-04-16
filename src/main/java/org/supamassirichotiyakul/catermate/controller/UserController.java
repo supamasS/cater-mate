@@ -56,14 +56,15 @@ public class UserController {
 //    }
 
     @PostMapping("/saveUser/{id}")
-    public String registerUserAccount(@PathVariable(value = "id") long id, @ModelAttribute("user") @Valid UserRegistrationDto userDto, BindingResult result){
-//
-//        User existing = userService.findByEmail(userDto.getEmail());
-//
-//        if (result.hasErrors()){
-//            return "redirect:/users";
-//
-//        }
+    public String registerUserAccount(@PathVariable(value = "id") long id,
+                                      @ModelAttribute("user") @Valid UserRegistrationDto userDto,
+                                      BindingResult result){
+        User existing = userService.findByEmail(userDto.getEmail());
+
+        if (result.hasErrors()){
+            return "redirect:/users";
+
+        }
 
         userService.updateUserById(userDto, id);
         return "redirect:/users";

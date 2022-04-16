@@ -74,21 +74,6 @@ public class OrderController {
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
         model.addAttribute("cart", cart);
 
-//        System.out.println("----- custom query 1 -----");
-//        orderService.findByCustomerFirstNameOrCustomerLastNameContaining("am").forEach(o ->  System.out.println(o.toString()));
-//
-//        System.out.println("----- custom query 2 -----");
-//        try {
-//            orderService.findByDeliveryDateEquals(new SimpleDateFormat
-//                    ("yyyy-MM-dd").parse("2022-04-16")).forEach(o ->  System.out.println(o.toString()));
-//        } catch (ParseException e) {
-//            System.out.println("Error parsing date");
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println("----- custom query 3 -----");
-//        orderService.findByLocationContaining("Gilbert").forEach(o -> System.out.println(o.toString()));
-
         return "order";
     }
 

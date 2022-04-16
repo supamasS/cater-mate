@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
     private CartService cartService;
     private MenuItemService menuItemService;
-    private CartItemService cartItemService;
+//    private CartItemService cartItemService;
 
     @Autowired
-    public CartController(CartService cartService, MenuItemService menuItemService, CartItemService cartItemService) {
+    public CartController(CartService cartService, MenuItemService menuItemService
+//            , CartItemService cartItemService
+    ) {
         this.cartService = cartService;
         this.menuItemService = menuItemService;
-        this.cartItemService = cartItemService;
+//        this.cartItemService = cartItemService;
     }
 
 //    @GetMapping("/cart")
