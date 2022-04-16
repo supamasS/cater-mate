@@ -107,7 +107,7 @@ public class OrderController {
 
     @PostMapping("/orderSubmitted")
     public String doOrderSubmitted(
-            @RequestParam(name="cart_id", required=true) int cartId,
+            @RequestParam(name="cart_id") int cartId,
             @ModelAttribute("order") Order order) {
         Cart cart = cartService.getCartById(cartId);
 
@@ -123,7 +123,7 @@ public class OrderController {
     public String updateOrder(@ModelAttribute("order") Order order) {
         orderService.saveOrder(order);
 
-        return "order_submitted";
+        return "redirect:/viewOrders";
     }
 
     @PostMapping("/findOrders")

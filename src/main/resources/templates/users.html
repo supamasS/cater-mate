@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>Cater Mate User Management</title>
+    <title>Cater Mate View Users</title>
 
     <link
       rel="stylesheet"
@@ -101,7 +101,7 @@
       <h1 class="display-2 pt-5 mb-5">Cater Mate</h1>
 
       <div class="card">
-        <h2>Users List</h2>
+        <h2>Users</h2>
         <hr class="ml-5 mr-5" />
         <div class="d-flex justify-content-begin mt-3 ml-5">
           <!-- <a
@@ -120,7 +120,7 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
-<!--                <th>Password</th>-->
+                <!--                <th>Password</th>-->
                 <!-- <th>Privilege</th> -->
                 <th>Actions</th>
               </tr>
@@ -130,7 +130,7 @@
                 <td class="px-3" th:text="${user.firstName}">First Name</td>
                 <td class="px-3" th:text="${user.lastName}">Last Name</td>
                 <td class="px-3" th:text="${user.email}">Email</td>
-<!--                <td class="px-3" th:text="${user.password}">Password</td>-->
+                <!--                <td class="px-3" th:text="${user.password}">Password</td>-->
                 <!-- <td th:text="${user.privilege}"></td> -->
                 <td>
                   <!-- <a

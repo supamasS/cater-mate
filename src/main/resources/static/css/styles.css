@@ -71,12 +71,29 @@ select:focus {
   color: rgb(189, 189, 189);
 }
 
-.submit_button {
-  background-color: #35afc8;
-  color: white;
+.custom-select,
+input,
+textarea,
+button, .btn, .btn-block {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300;
+  height: auto;
 }
 
-.btn-primary {
+.btn-block {
+  text-transform: uppercase;
+  height: 43px;
+  cursor: pointer;
+}
+
+.submit_button,
+.btn-primary,
+button {
   background-color: #35afc8;
   border-color: #35afc8;
   color: white;

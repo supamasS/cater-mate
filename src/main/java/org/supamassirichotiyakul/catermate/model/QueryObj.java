@@ -11,7 +11,7 @@ public class QueryObj {
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date queryDeliveryDate = new Date();
+    private Date queryDeliveryDate;
     private String queryLocation = "";
 
     public QueryObj() {

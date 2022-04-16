@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>Cater Mate Update User</title>
+    <title>Cater Mate Update Menu Item</title>
 
     <link
       rel="stylesheet"
@@ -63,7 +63,7 @@
           >
           <a class="nav-item nav-link" href="#">Kitchen</a>
           <a class="nav-item nav-link" href="login.html" th:href="@{/logout}"
-          >Logout</a
+            >Logout</a
           >
         </div>
       </div>
@@ -89,21 +89,31 @@
             <!-- Add hidden form field to handle update -->
             <input type="hidden" th:field="*{id}" />
 
-            <input
-              type="text"
-              th:field="*{name}"
-              class="form-control mb-4 col-4"
-            />
+            <div class="form-group col-6">
+              <label for="name" class="form-control-label">Name</label>
+              <input
+                id="name"
+                type="text"
+                th:field="*{name}"
+                class="form-control text-center"
+              />
+            </div>
 
-            <input
-              type="text"
-              th:field="*{price}"
-              class="form-control mb-4 col-4"
-            />
+            <div class="form-group col-6">
+              <label for="price" class="form-control-label">Price</label>
+              <input
+                id="price"
+                type="text"
+                th:field="*{price}"
+                class="form-control text-center"
+              />
+            </div>
 
-            <button type="submit" class="btn btn-info col-4 mt-3 mb-5">
-              Update Menu Item
-            </button>
+            <div class="form-group col-6 my-5">
+              <button type="submit" class="w-100 btn btn-primary btn-block">
+                Update
+              </button>
+            </div>
           </form>
         </div>
       </div>

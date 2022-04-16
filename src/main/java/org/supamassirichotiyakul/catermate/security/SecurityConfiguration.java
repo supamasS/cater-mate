@@ -20,15 +20,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests()
-                .antMatchers("/users").hasAnyRole("SUPERADMIN")
-                .antMatchers("/menu", "/viewOrders").hasAnyRole("ADMIN", "SUPERADMIN")
                     .antMatchers(
                         "/registration**",
                         "/js/**",
                         "/css/**",
                         "/img/**",
                         "/webjars/**").permitAll()
-                    .anyRequest().authenticated()
+                    .antMatchers("/users", "/saveUser/**", "/showFormForUpdate/**", "/deleteUser/**")
+                        .hasAnyRole("SUPERADMIN")
+                    .antMatchers("/menu", "/showMenuItemForm", "saveMenuItem",
+                        "/showMenuItemFormForUpdate/**", "/deleteMenuItem/**",
+                        "/showOrderFormForUpdate/**", "/updateOrder", "/deleteOrder/**")
+                        .hasAnyRole("ADMIN", "SUPERADMIN")
+                    .antMatchers("/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+
+                .anyRequest().authenticated()
                 .and()
                     .formLogin()
                         .loginPage("/login").permitAll()

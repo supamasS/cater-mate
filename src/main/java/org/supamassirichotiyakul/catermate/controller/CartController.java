@@ -75,7 +75,7 @@ public class CartController {
         cartService.saveCart(cart);
 
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
-//        model.addAttribute("cart", cart); // already in the model
+//        model.addAttribute("cart", cart); // already in the model, but need to update the id?
 
         return "order";
     }

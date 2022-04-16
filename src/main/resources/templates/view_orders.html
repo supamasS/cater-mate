@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>Cater Mate User Management</title>
+    <title>Cater Mate View Orders</title>
 
     <link
       rel="stylesheet"
@@ -49,6 +49,21 @@
         margin-bottom: 60px;
         border: none !important;
         box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .custom-select,
+      input,
+      textarea,
+      button,
+      .btn {
+        padding: 8px 15px !important;
+        border-radius: 5px !important;
+        /* margin: 5px 0px; */
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 18px !important;
+        font-weight: 300;
+        height: 45px;
       }
     </style>
   </head>
@@ -98,10 +113,9 @@
       <h1 class="display-2 pt-5 mb-5">Cater Mate</h1>
 
       <div class="card">
-        <h2>Orders List</h2>
+        <h2>Orders</h2>
         <hr class="ml-5 mr-5" />
 
-        <h2 class="text-left mx-5 my-3">Search</h2>
         <form
           name="searchForm"
           class="form-card mx-5"
@@ -111,18 +125,18 @@
           method="POST"
         >
           <div class="row justify-content-center text-left">
-            <div class="form-group col-12 col-sm-5 col-md-4 flex-column d-flex">
-              <label class="form-control-label">First or Last Name</label>
+            <div class="form-group col-12 col-lg-3 flex-column d-flex">
+              <label class="form-control-label">Name</label>
               <input
                 type="text"
                 id="q_name"
                 name="q_name"
-                placeholder="Customer's first or last name"
+                placeholder="First or last name"
                 th:field="*{queryName}"
               />
             </div>
 
-            <div class="form-group col-12 col-sm-5 col-md-3 flex-column d-flex">
+            <div class="form-group col-12 col-lg-3 flex-column d-flex">
               <label class="form-control-label">Location</label>
               <select
                 name="q_location"
@@ -137,8 +151,8 @@
               </select>
             </div>
 
-            <div class="form-group col-12 col-sm-5 col-md-3 flex-column d-flex">
-              <label class="form-control-label">Catering Date</label>
+            <div class="form-group col-12 col-lg-3 flex-column d-flex">
+              <label class="form-control-label">Date</label>
               <input
                 id="q_delivery_date"
                 type="date"
@@ -147,39 +161,33 @@
               />
             </div>
 
-            <div class="form-group col-2 mt-4">
+            <div class="form-group col-12 col-lg-3">
+              <label class="form-control-label" style="color: white"
+                >Search</label
+              >
+
               <button type="submit" class="w-100 btn btn-primary btn-block">
                 <i class="fa fa-search mr-1"></i> Search
               </button>
             </div>
-
-            <!-- <div class="form-group col-12 col-sm-5 col-md-2 flex-column d-flex"> -->
-            <!--  <label class="form-control-label"></label> -->
-            <!-- class="border-none search mt-3 pt-3" -->
-            <!-- <input
-              class="btn btn-block btn-primary"
-
-              title="Search"
-              data-toggle="tooltip"
-              href="view_orders.html"
-              th:href="@{/findOrder}"
-            >
-              <span class="material-icons"> search </span> -->
-            <!-- </div> -->
           </div>
         </form>
         <!-- End search box -->
 
         <hr class="ml-5 mr-5" />
 
-        <div class="d-flex justify-content-begin mt-3 ml-5">
-          <a href="order.html" th:href="@{/order}" class="btn btn-primary mb-4">
-            <i class="fa fa-plus mr-1"></i> Add Order
+        <div class="d-flex justify-content-begin mt-3 mx-5">
+          <a
+            href="order.html"
+            th:href="@{/order}"
+            class="btn btn-primary btn-block col-12 col-lg-2 mb-4"
+          >
+            <i class="fa fa-plus mr-1"></i> Add
           </a>
         </div>
 
         <div class="mx-5 pb-4">
-          <table class="table table-bordered table-responsive-md mx-auto">
+          <table class="table table-bordered table-responsive-lg mx-auto">
             <thead>
               <tr>
                 <th>First Name</th>
@@ -188,7 +196,6 @@
                 <th>Delivery Option</th>
                 <th>Location</th>
                 <th>Catering Date</th>
-                <!-- <th>Kitchen Ready Time</th> -->
                 <th>Total</th>
                 <th>Actions</th>
               </tr>
@@ -213,24 +220,10 @@
                 <td class="text-left px-3" th:text="${order.deliveryDate}">
                   2022-01-01
                 </td>
-                <!-- <td class="text-left px-3" th:text="${order.kitchenReadyTime}">
-                  18:00
-                </td> -->
                 <td class="text-right px-3" th:text="${order.totalDisplay}">
                   $100.00
                 </td>
                 <td>
-                  <!-- <a
-                    href="checkout.html"
-                    th:href="@{/showOrderFormForUpdate/{id}(id=${order.id})}"
-                    class="btn btn-primary"
-                    >Update</a
-                  >
-                  <a
-                    th:href="@{/deleteOrder/{id}(id=${order.id})}"
-                    class="btn btn-outline-danger"
-                    >Delete</a
-                  > -->
                   <a
                     class="edit mx-2"
                     title="Edit"
