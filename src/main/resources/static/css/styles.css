@@ -144,6 +144,7 @@ button {
 .proj-menu-card:hover {
   border-color: #35afc8;
   cursor: pointer;
+  box-shadow: 0 6px 12px 0 rgba(53, 53, 53, 0.1);
 }
 
 .edit {

@@ -111,7 +111,7 @@ public class OrderController {
         return "redirect:/viewOrders";
     }
 
-    @PostMapping("/findOrders")
+    @GetMapping("/findOrders")
     public String findOrders(@ModelAttribute QueryObj queryObj, Model model) {
         System.out.println("qName is " + queryObj.getQueryName());
 

@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
     public void copyInfoFromCart(Order order, Cart cart) {
         cart.getCartItemList().forEach( cartItem -> {
             OrderItem orderItem = new OrderItem(cartItem);
-            orderItem.setOrder(order);
+//            orderItem.setOrder(order);
             order.getOrderItemList().add(orderItem);
         });
 

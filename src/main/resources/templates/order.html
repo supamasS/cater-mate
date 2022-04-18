@@ -135,8 +135,8 @@
 
     <h1 class="display-2 pt-5 mb-5">Cater Mate</h1>
 
-    <div class="container-fluid px-1 mx-auto">
-      <div class="card-deck mx-4">
+    <div class="container-fluid mx-auto">
+      <div class="card-deck mx-5">
         <!--        <div class="text-center"> style="width: 80vw" -->
         <div class="card-1 card text-center col-md-8 col-sm-12 py-4">
           <h1>Menu</h1>
@@ -202,7 +202,7 @@
                       >
                         <!-- Add hidden form fields to handle update, since it creates a new object -->
                         <input type="hidden" th:field="*{id}" />
-                                                <input type="hidden" th:field="*{cartItemList}" />
+                        <input type="hidden" th:field="*{cartItemList}" />
 
                         <input
                           type="number"
@@ -218,7 +218,7 @@
                           Close
                         </button>
                         <input
-                          class="btn btn-secondary"
+                          class="btn btn-primary"
                           value="Add to Cart"
                           type="submit"
                         />

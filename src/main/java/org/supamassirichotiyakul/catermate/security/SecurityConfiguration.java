@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
+//@Configuration    // Comment out for testing RestController
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // We will create userService class in upcoming step
     @Autowired

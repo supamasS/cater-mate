@@ -11,9 +11,9 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+//    @ManyToOne
+//    @JoinColumn(name = "order_id")
+//    private Order order;
 
     private long menuItemId;
 
@@ -45,13 +45,13 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     public long getMenuItemId() {
         return menuItemId;

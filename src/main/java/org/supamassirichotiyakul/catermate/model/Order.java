@@ -40,7 +40,9 @@ public class Order {
 
     private double total;
 
-    @OneToMany(mappedBy = "order", targetEntity = OrderItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//    @OneToMany(mappedBy = "order", targetEntity = OrderItem.class,
+    @OneToMany(targetEntity = OrderItem.class,
+            fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<OrderItem> orderItemList;
 
     public Order() {
