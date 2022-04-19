@@ -17,6 +17,8 @@ Add some description of the app (one or two paragraph)
 - [Future Improvements](#future-improvements)
 
 ## Daily Progress
+- April 20th
+  - Fixed update user functionality bug
 
 - April 19th (90% done)
   - Added Logger and log messages to controller classes.

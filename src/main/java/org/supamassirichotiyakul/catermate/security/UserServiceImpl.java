@@ -83,14 +83,14 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    public User updateUserById(UserRegistrationDto dto, long id) {
-        User user = userRepository.getById(id);
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setEmail(dto.getEmail());
+    public User updateUser(User user) {
+        User existing = userRepository.getById(user.getId());
+        existing.setFirstName(user.getFirstName());
+        existing.setLastName(user.getLastName());
+        existing.setEmail(user.getEmail());
 //        user.setPassword(passwordEncoder.encode(dto.getPassword()));
 //        user.addRole(new Role("ROLE_USER"));        // Supamas changed
-        return userRepository.save(user);
+        return userRepository.save(existing);
     }
 
     @Override

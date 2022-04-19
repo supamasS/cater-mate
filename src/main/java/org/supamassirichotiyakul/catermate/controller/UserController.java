@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.supamassirichotiyakul.catermate.security.User;
-import org.supamassirichotiyakul.catermate.security.UserRegistrationDto;
 import org.supamassirichotiyakul.catermate.security.UserService;
 
 import javax.validation.Valid;
@@ -59,20 +58,24 @@ public class UserController {
 
     @PostMapping("/saveUser/{id}")
     public String registerUserAccount(@PathVariable(value = "id") long id,
-                                      @ModelAttribute("user") @Valid UserRegistrationDto userDto,
+                                      @ModelAttribute("user") @Valid User user,
                                       BindingResult result){
-        User existing = userService.findByEmail(userDto.getEmail());
+
+        Logger logger = LoggerFactory.getLogger(UserController.class);
+
+        logger.info("Updating user with email " + user.getEmail()
+                + " has been updated");
+
+//        User existing = userService.findByEmail(userDto.getEmail());
 
         if (result.hasErrors()){
             return "redirect:/users";
 
         }
 
-        userService.updateUserById(userDto, id);
+        userService.updateUser(user);
 
-        Logger logger = LoggerFactory.getLogger(UserController.class);
-
-        logger.info("User with email " + userDto.getEmail()
+        logger.info("User with email " + user.getEmail()
                     + " has been updated");
 
         return "redirect:/users";

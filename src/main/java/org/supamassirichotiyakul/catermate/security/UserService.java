@@ -8,7 +8,7 @@ public interface UserService extends UserDetailsService {
     List<User> getAllUsers();
     User findByEmail(String email);
     User save(UserRegistrationDto registration);
-    User updateUserById(UserRegistrationDto dto, long id);
+    User updateUser(User user);
 
     User getUserById(long id);
     void deleteUserById(long id);
