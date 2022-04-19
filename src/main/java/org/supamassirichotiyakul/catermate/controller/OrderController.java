@@ -1,5 +1,8 @@
 package org.supamassirichotiyakul.catermate.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.codec.LoggingCodecSupport;
 import org.springframework.web.bind.annotation.*;
 import org.supamassirichotiyakul.catermate.model.Cart;
 import org.supamassirichotiyakul.catermate.model.Order;
@@ -19,17 +22,14 @@ import java.util.Set;
 public class OrderController {
     private OrderService orderService;
     private MenuItemService menuItemService;
-    private OrderItemService orderItemService;
     private CartService cartService;
 
     @Autowired
     public OrderController(OrderService orderService,
                            MenuItemService menuItemService,
-                           OrderItemService orderItemService,
                            CartService cartService) {
         this.orderService = orderService;
         this.menuItemService = menuItemService;
-        this.orderItemService = orderItemService;
         this.cartService = cartService;
     }
 
@@ -71,6 +71,14 @@ public class OrderController {
         Cart cart = new Cart();
         cartService.saveCart(cart); // need to save to create a new id
 
+//        Logger logger = LoggerFactory.getLogger(OrderController.class);
+//
+//        logger.trace("A TRACE Message");
+//        logger.debug("A DEBUG Message");
+//        logger.info("An INFO Message");
+//        logger.warn("A WARN Message");
+//        logger.error("An ERROR Message");
+
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
         model.addAttribute("cart", cart);
 
@@ -99,6 +107,12 @@ public class OrderController {
         orderService.copyInfoFromCart(order, cart);
 
         orderService.saveOrder(order);
+
+        Logger logger = LoggerFactory.getLogger(OrderController.class);
+
+        logger.info("Order for " + order.getCustomerFirstName() + " "
+                    + order.getCustomerLastName()
+                    + " has been submitted");
 
         return "order_submitted";
     }

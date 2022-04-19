@@ -1,5 +1,7 @@
 package org.supamassirichotiyakul.catermate.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supamassirichotiyakul.catermate.model.MenuItem;
 import org.supamassirichotiyakul.catermate.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,12 @@ public class MenuItemController {
     public String save(@ModelAttribute("menuItem") MenuItem menuItem) {
         // save menuItem to database
         menuItemService.saveMenuItem(menuItem);
+
+        Logger logger = LoggerFactory.getLogger(MenuItemController.class);
+
+        logger.info("Menu item " + menuItem.getName()
+                + " has been saved to the menu");
+
         return "redirect:/menu";
     }
 

@@ -18,6 +18,10 @@ Add some description of the app (one or two paragraph)
 
 ## Daily Progress
 
+- April 19th (90% done)
+  - Added Logger and log messages to controller classes.
+  - Added JavaDoc folder and JavaDoc files.
+  
 - April 18th (87% done)
   - Added OrderRestController to provide web services.
   - Updated README.md file to have links and Contents section.

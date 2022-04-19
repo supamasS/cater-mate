@@ -1,5 +1,7 @@
 package org.supamassirichotiyakul.catermate.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +28,10 @@ public class UserController {
     @GetMapping("/users")
     public String getAll(Model model) {
         model.addAttribute("listUsers", userService.getAllUsers());
-        userService.getAllUsers().forEach(u -> {
-            System.out.println("First Name: " + u.getFirstName());
-            u.getRoleSet().forEach(r -> System.out.println("Role: " + r.getName()));
-        });
+//        userService.getAllUsers().forEach(u -> {
+//            System.out.println("First Name: " + u.getFirstName());
+//            u.getRoleSet().forEach(r -> System.out.println("Role: " + r.getName()));
+//        });
         return "users";
     }
 
@@ -67,6 +69,12 @@ public class UserController {
         }
 
         userService.updateUserById(userDto, id);
+
+        Logger logger = LoggerFactory.getLogger(UserController.class);
+
+        logger.info("User with email " + userDto.getEmail()
+                    + " has been updated");
+
         return "redirect:/users";
     }
 

@@ -35,7 +35,7 @@ public class OrderRestController {
         this.cartService = cartService;
     }
 
-    @GetMapping("/viewOrders")
+    @GetMapping("/orders")
     public List<Order> getAll(Model model) {
 //        model.addAttribute("listOrders", orderService.getAllOrders());
 //        model.addAttribute("queryObj", new QueryObj());

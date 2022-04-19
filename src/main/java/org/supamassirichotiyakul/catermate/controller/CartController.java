@@ -1,5 +1,7 @@
 package org.supamassirichotiyakul.catermate.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supamassirichotiyakul.catermate.model.Cart;
 import org.supamassirichotiyakul.catermate.service.CartItemService;
 import org.supamassirichotiyakul.catermate.service.CartService;
@@ -75,6 +77,11 @@ public class CartController {
         cartService.addMenuItemToCartById(cart, menuItemId);
 
         cartService.saveCart(cart);
+
+        Logger logger = LoggerFactory.getLogger(CartController.class);
+
+        logger.info("Menu item with id " + menuItemId
+                    + " has been added to cart");
 
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
 //        model.addAttribute("cart", cart); // already in the model, but need to update the id?
