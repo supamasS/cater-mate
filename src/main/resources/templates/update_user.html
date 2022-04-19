@@ -86,9 +86,9 @@
             th:object="${user}"
           >
             <!-- Add all hidden form fields to handle update -->
-            <!--            <input type="hidden" th:field="*{id}" />-->
+            <input type="hidden" th:field="*{id}" />
             <input type="hidden" th:field="*{password}" />
-            <!--            <input th:field="*{roleSet}" />-->
+            <input type="hidden" th:field="*{roleSet}" />
 
             <div class="form-group col-6">
               <label for="firstName" class="form-control-label"
