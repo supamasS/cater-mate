@@ -21,6 +21,8 @@ public class MenuItemServiceImplTest {
         List<MenuItem> allMenuItems = menuItemService.getAllMenuItems();
         int beforeAddingMoreMenuItems = allMenuItems.size();
 
+        Assertions.assertThat(beforeAddingMoreMenuItems).isEqualTo(10);
+
         MenuItem menuItem1 = new MenuItem();
         menuItem1.setName("Horchata");
         menuItem1.setPrice(3.5);

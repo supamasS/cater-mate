@@ -19,7 +19,9 @@ public class Cart {
 //    @JoinColumn(name = "user_id")
 //    private User user;
 
-    @OneToMany(mappedBy = "cart", targetEntity = CartItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @OneToMany(
+//            mappedBy = "cart",
+            targetEntity = CartItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<CartItem> cartItemList;
 
     @Transient
@@ -114,7 +116,7 @@ public class Cart {
     }
 
     public void addCartItemToCart(CartItem cartItem) {
-        cartItem.setCart(this);
+//        cartItem.setCart(this);
         cartItem.setQuantity(this.getCurrentItemQuantity());
         this.getCartItemList().add(cartItem);
         this.setCurrentItemQuantity(1);

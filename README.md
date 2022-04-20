@@ -18,8 +18,13 @@ Add some description of the app (one or two paragraph)
 
 ## Daily Progress
 - April 20th
-  - Added data.sql for populating the database by SQL statements
+  - Added parameterized test for CartServiceImplTest
+  - Added OrderServiceImplTest
+  - Fixed bug where updating order is not saving orderItemList correctly
+  - Added data.sql for populating the database by SQL statements, both in main and in test
+  - Added application.properties in test/resources folder
   - Added test code MenuItemServiceImplTest
+  - Removed cart reference from CartItem class
   - Fixed update user functionality bug
 
 - April 19th (90% done)
