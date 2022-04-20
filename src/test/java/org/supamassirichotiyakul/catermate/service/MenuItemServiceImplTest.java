@@ -1,0 +1,81 @@
+package org.supamassirichotiyakul.catermate.service;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+import org.supamassirichotiyakul.catermate.model.MenuItem;
+
+import java.util.List;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class MenuItemServiceImplTest {
+    @Autowired
+    private MenuItemService menuItemService;
+    
+    @Test
+    @Transactional
+    void getAllMenuItemsShouldReturnCorrectResultList() {
+        // act and assert
+        List<MenuItem> allMenuItems = menuItemService.getAllMenuItems();
+        int beforeAddingMoreMenuItems = allMenuItems.size();
+
+        MenuItem menuItem1 = new MenuItem();
+        menuItem1.setName("Horchata");
+        menuItem1.setPrice(3.5);
+        menuItemService.saveMenuItem(menuItem1);
+        int afterAddingMoreMenuItems = menuItemService.getAllMenuItems().size();
+
+        Assertions.assertThat(afterAddingMoreMenuItems).isEqualTo(beforeAddingMoreMenuItems + 1);
+        Assertions.assertThat(allMenuItems.contains(menuItem1));
+    }
+
+    @Test
+    @Transactional
+    void saveMenuItemShouldSaveToTable() {
+        List<MenuItem> allMenuItems = menuItemService.getAllMenuItems();
+        int beforeAddingMoreMenuItems = allMenuItems.size();
+
+        MenuItem menuItem1 = new MenuItem();
+        menuItem1.setName("Horchata");
+        menuItem1.setPrice(3.5);
+        menuItemService.saveMenuItem(menuItem1);
+
+        int afterAddingMoreMenuItems = menuItemService.getAllMenuItems().size();
+
+        Assertions.assertThat(afterAddingMoreMenuItems).isEqualTo(beforeAddingMoreMenuItems + 1);
+        Assertions.assertThat(allMenuItems.contains(menuItem1));
+    }
+
+    @Test
+    @Transactional
+    void getMenuItemByIdShouldReturnCorrectMenuItem() {
+        // act and assert
+        MenuItem expected = new MenuItem();
+        expected.setName("Horchata");
+        expected.setPrice(3.5);
+        menuItemService.saveMenuItem(expected);
+
+        MenuItem actual = menuItemService.getMenuItemById(expected.getId());
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    @Transactional
+    void deleteMenuItemByIdShouldDeleteFromTable() {
+        // act and assert
+        MenuItem expected = new MenuItem();
+        expected.setName("Horchata");
+        expected.setPrice(3.5);
+        menuItemService.saveMenuItem(expected);
+
+        List<MenuItem> allMenuItems = menuItemService.getAllMenuItems();
+        int beforeDeletingMenuItem = allMenuItems.size();
+
+        menuItemService.deleteMenuItemById(expected.getId());
+
+        Assertions.assertThat(menuItemService.getAllMenuItems().size()).isEqualTo(beforeDeletingMenuItem-1);
+    }
+}

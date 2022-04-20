@@ -18,6 +18,8 @@ Add some description of the app (one or two paragraph)
 
 ## Daily Progress
 - April 20th
+  - Added data.sql for populating the database by SQL statements
+  - Added test code MenuItemServiceImplTest
   - Fixed update user functionality bug
 
 - April 19th (90% done)
