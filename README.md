@@ -10,7 +10,7 @@ Add some description of the app (one or two paragraph)
   - [Admin](#admin)
 - [Technical Architecture]()
 - [Wire Frame]()
-- [Schema Diagram](Schema.png)
+- [Schema Diagram](Schema.pdf)
 - [Jira](https://javacourse-2.atlassian.net/jira/software/projects/CM/boards/2) -- Please contact [Supamas Sirichotiyakul](mailto:supamas.sirichotiyakul@gmail.com) to access this Jira account
 - [Technical Challenges](#technical-challenges)
 - [Lessons Learned](#lessons-learned)
@@ -18,7 +18,7 @@ Add some description of the app (one or two paragraph)
 
 ## Daily Progress
 - April 21st (92% done)
-  - Updated README.md to link to Schema.png.
+  - Updated README.md to link to Schema.pdf.
   - Created schema for the project in Schema.png file.
   
 - April 20th (92% done)
