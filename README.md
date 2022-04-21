@@ -17,7 +17,10 @@ Add some description of the app (one or two paragraph)
 - [Future Improvements](#future-improvements)
 
 ## Daily Progress
-- April 20th
+- April 21st (92% done)
+  - Created schema for the project in Schema.png file.
+  
+- April 20th (92% done)
   - Added parameterized test for CartServiceImplTest
   - Added OrderServiceImplTest
   - Fixed bug where updating order is not saving orderItemList correctly
