@@ -2,13 +2,11 @@ package org.supamassirichotiyakul.catermate.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.codec.LoggingCodecSupport;
 import org.springframework.web.bind.annotation.*;
 import org.supamassirichotiyakul.catermate.model.Cart;
 import org.supamassirichotiyakul.catermate.model.Order;
 import org.supamassirichotiyakul.catermate.model.QueryObj;
 import org.supamassirichotiyakul.catermate.service.CartService;
-import org.supamassirichotiyakul.catermate.service.OrderItemService;
 import org.supamassirichotiyakul.catermate.service.OrderService;
 import org.supamassirichotiyakul.catermate.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,23 +123,33 @@ public class OrderController {
         return "redirect:/viewOrders";
     }
 
-    @GetMapping("/findOrders")
+    @PostMapping("/findOrders")
     public String findOrders(@ModelAttribute QueryObj queryObj, Model model) {
         System.out.println("qName is " + queryObj.getQueryName());
+        System.out.println("qLocation is " + queryObj.getQueryLocation());
+        System.out.println("qDate is " + queryObj.getQueryDeliveryDate());
 
         Set<Order> orderSet = new HashSet<>();
 
-        if(!queryObj.getQueryName().isEmpty()) {
-            String name = queryObj.getQueryName();
-            orderSet.addAll(orderService.findByCustomerFirstNameContainingOrCustomerLastNameContaining(name, name));
-        }
+        if(queryObj.getQueryName().isEmpty()
+                && queryObj.getQueryLocation().isEmpty()
+                && queryObj.getQueryDeliveryDate() == null) {
+            System.out.println("all empty fields");
 
-        if(!queryObj.getQueryLocation().isEmpty()){
-            orderSet.addAll(orderService.findByLocationContaining(queryObj.getQueryLocation()));
-        }
+            orderSet.addAll(orderService.getAllOrders());
+        } else {
+            if (!queryObj.getQueryName().isEmpty()) {
+                String name = queryObj.getQueryName();
+                orderSet.addAll(orderService.findByCustomerFirstNameContainingOrCustomerLastNameContaining(name, name));
+            }
 
-        if(queryObj.getQueryDeliveryDate() != null){
-            orderSet.addAll(orderService.findByDeliveryDateEquals(queryObj.getQueryDeliveryDate()));
+            if (!queryObj.getQueryLocation().isEmpty()) {
+                orderSet.addAll(orderService.findByLocationContaining(queryObj.getQueryLocation()));
+            }
+
+            if (queryObj.getQueryDeliveryDate() != null) {
+                orderSet.addAll(orderService.findByDeliveryDateEquals(queryObj.getQueryDeliveryDate()));
+            }
         }
 
         model.addAttribute("listOrders", orderSet);

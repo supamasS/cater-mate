@@ -141,6 +141,11 @@ button {
   border-bottom: solid 2px white;
 }
 
+.card {
+  border-radius: 5px;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
 .proj-menu-card:hover {
   border-color: #35afc8;
   cursor: pointer;

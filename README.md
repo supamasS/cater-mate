@@ -1,22 +1,33 @@
 ## Food catering application
 
-Add some description of the app (one or two paragraph)
+This app is intended to be used in house by a catering business owner and a few users that work for the owner, for
+the purpose of keeping track of the orders placed by the customer and also having the information available for
+the kitchen workers to view and make food to fulfill the order on the promised date and time.
+
+The design of this app is very similar to a general shopping app with products, shopping carts, orders, and customer
+information, so it can be used and extended to any type of products.
 
 ## Contents
 
+- [Case Study Rubrics](https://docs.google.com/document/d/1vX3oHn2rudg7hKWhudUCl5nQ-k447fwGf1XPg2YYBh0/edit)
 - [Daily Progress](#daily-progress)
 - [User Stories](#user-stories)
   - [User](#user)
   - [Admin](#admin)
-- [Technical Architecture]()
+- [Technical Architecture](doc/Cater%20Mate%20Technical%20Architecture.pdf)
 - [Wire Frame]()
-- [Schema Diagram](Schema.pdf)
+- [Schema Diagram](Sirichotiyakul_Supamas_Schema.pdf)
 - [Jira](https://javacourse-2.atlassian.net/jira/software/projects/CM/boards/2) -- Please contact [Supamas Sirichotiyakul](mailto:supamas.sirichotiyakul@gmail.com) to access this Jira account
 - [Technical Challenges](#technical-challenges)
 - [Lessons Learned](#lessons-learned)
 - [Future Improvements](#future-improvements)
 
 ## Daily Progress
+- April 22nd (95% done)
+  - Added Description, Technical Architecture, Technical Challenges, Lessons Learned, Future Improvements
+  - Cleaned up CSS
+  - Added lambda expressions in the main CaterMateApplication class.
+  
 - April 21st (92% done)
   - Updated README.md to link to Schema.pdf.
   - Created schema for the project in Schema.png file.
@@ -92,34 +103,36 @@ Add some description of the app (one or two paragraph)
 
 ### User
 
-- As a user, I want to add each item in the order, in terms of name, options, and quantity.
+- As a user, I want to add each item in the order, with the name and quantity.
+
+- As a user, I want to check out and add customer information after desired items have been added to the cart.
 
 - As a user, I want to see the total amount as I add each item so that I can tell the customer if needed.
 
-#### Not implemented in this version:
+- As a user, I want to query the orders that need to be filled for a specific day so that I can give the information
+  to the people who work in the kitchen.
+
+#### Not implemented in this version
 
 - As a user, I want to have the kitchen pick sheet automatically created after I place an order.
 
 - As a user, I want to create an invoice as a pdf file so that I can send it to the customer.
 
-- As a user, I want to query the order that need to be filled for a specific day so that I can print the pick sheets
-  for the kitchen.
-
 ### Admin
-
-- As an admin, I want to view all the items on the menu listed with the price.
-
-- As an admin, I want to search the menu based on customer name, date, and location.
 
 - As an admin, I want to create a new menu item so that it's available on the menu.
 
-- As an admin, I want to edit a menu item in terms of name, description, and price, so that it's up to date.
+- As an admin, I want to view all the items on the menu listed with the price.
 
-- As an admin, I want to delete a menu item so that it is no longer on the menu.
+- As an admin, I want to edit a menu item in terms of name, description, and price, so that it's up-to-date.
 
-#### Not implemented in this version:
+- As an admin, I want to delete a menu item so that it is no longer available on the menu.
 
-- As an admin, I want to view the quantity ordered for each menu item so I know which item is popular.
+- As an admin, I want to search the orders based on customer name, date, and location.
+
+#### Not implemented in this version
+
+- As an admin, I want to view the quantity ordered for each menu item so that I know which item is popular.
 
 - As an admin, I want to add a new ingredient so that it can be used as part of an item in the menu.
 
@@ -130,7 +143,38 @@ Add some description of the app (one or two paragraph)
 - As an admin, I want to delete an ingredient so that it is removed from the list.
 
 ## Technical Challenges
+- Thymeleaf can only return a single object with the form submission 
+  - An example was in the CartController @PostMapping("/addToCart/{menu_item_id}") - both the cart information and 
+    the menu item are needed by the controller so it can add the menu item to the cart. 
+  - The solution was to send the cart back as a model but send the menu item id with the path variable, then query 
+    the database for the menu item in order to get name & price.
+  
+
+- The original design was to have the order and checkout pages combined in one page but things become too complicated in
+  a single page with @PostMapping required both for adding an item to the cart (which is saved to the database in case
+  the cart gets abandoned) and submitting customer information. 
+  - The solution was to split them out into 2 pages which made the implementation much easier to understand.
 
 ## Lessons Learned
+- Defining the project scope that is small enough to accomplish in the given time frame is critical to success.
+- Project management and setting priorities and daily goals using a tool like Jira was very helpful.
+- Making decisions quick and getting implementation done early then having time to go back to improve things was 
+  a lot better than taking a long time to try to make a perfect decision and running short on time.
 
 ## Future Improvements
+- Add functionality for an admin to create, read, update, delete the following:
+  - ingredients 
+  - list of ingredients with associated amount for each menu item. 
+  - a kitchen pick sheet after the order is submitted
+- Allow customers to log in as users, save the following customer information and use them for the order:
+  - first name
+  - last name
+  - address
+  - phone number
+  - credit card information
+- Add invoice-related functionality:
+  - create an invoice in pdf format
+  - email an invoice to the customer
+- List menu item with associated total quantity ordered so that the business owner knows which menu items are popular.
+
+

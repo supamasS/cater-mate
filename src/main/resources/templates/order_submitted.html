@@ -25,12 +25,19 @@
     />
 
     <style>
+      .card {
+        height: 540px;
+        width: 400px;
+      }
+
       .form-order-submitted {
         width: 100%;
         max-width: 600px;
-        padding: 40px;
+        padding: 20px;
         margin: auto;
         z-index: 2;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
       }
 
       .btn.btn-primary:active:hover,
@@ -89,34 +96,40 @@
 
     <h1 class="display-2 pt-5 mb-5">Cater Mate</h1>
     <form
-      class="form-order-submitted d-flex flex-column align-items-center"
+      class="form-order-submitted d-flex flex-column align-items-center px-2"
       action="order.html"
       th:action="@{/order}"
     >
-      <h2 class="my-5">Thank you for your order!</h2>
+      <h2 class="my-4">Thank you for your order!</h2>
 
       <!-- Copied from https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340 -->
-      <div
-        class="tenor-gif-embed"
-        data-postid="17915340"
-        data-share-method="host"
-        data-aspect-ratio="1.66667"
-        data-width="100%"
-      >
-        <a
-          href="https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340"
-          >Mexican Cuisine Mexican Food GIF</a
-        >from
-        <a href="https://tenor.com/search/mexican+cuisine-gifs"
-          >Mexican Cuisine GIFs</a
-        >
-      </div>
-      <script
-        type="text/javascript"
-        async
-        src="https://tenor.com/embed.js"
-      ></script>
+<!--      <div-->
+<!--        class="tenor-gif-embed"-->
+<!--        data-postid="17915340"-->
+<!--        data-share-method="host"-->
+<!--        data-aspect-ratio="1.66667"-->
+<!--        data-width="100%"-->
+<!--      >-->
+<!--        <a-->
+<!--          href="https://tenor.com/view/mexican-cuisine-mexican-food-yummy-food-gif-17915340"-->
+<!--          >Mexican Cuisine Mexican Food GIF</a-->
+<!--        >from-->
+<!--        <a href="https://tenor.com/search/mexican+cuisine-gifs"-->
+<!--          >Mexican Cuisine GIFs</a-->
+<!--        >-->
+<!--      </div>-->
+<!--      <script-->
+<!--        type="text/javascript"-->
+<!--        async-->
+<!--        src="https://tenor.com/embed.js"-->
+<!--      ></script>-->
       <!-- End copied code -->
+
+      <img
+              class="card"
+              src="../static/img/tacos2.jpeg"
+              th:src="@{img/tacos2.jpeg}"
+      />
 
       <input
         class="btn btn-primary btn-block col-6 my-5"

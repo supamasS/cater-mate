@@ -1,7 +1,6 @@
 package org.supamassirichotiyakul.catermate.service;
 
 import org.supamassirichotiyakul.catermate.exception.CartItemNotFoundException;
-import org.supamassirichotiyakul.catermate.model.Cart;
 import org.supamassirichotiyakul.catermate.model.CartItem;
 import org.supamassirichotiyakul.catermate.model.MenuItem;
 import org.supamassirichotiyakul.catermate.repository.CartItemRepository;

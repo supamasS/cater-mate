@@ -25,15 +25,11 @@
       th:href="@{/css/styles.css}"
     />
     <style>
-      .card {
+      .card-menu {
         padding: 20px 10px 10px 10px;
         margin-top: 0px;
         margin-bottom: 60px;
-      }
-
-      .card-1 {
-        border: none !important;
-        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
       }
 
       .form-control-label {
@@ -138,7 +134,7 @@
     <div class="container-fluid mx-auto">
       <div class="card-deck mx-5">
         <!--        <div class="text-center"> style="width: 80vw" -->
-        <div class="card-1 card text-center col-md-8 col-sm-12 py-4">
+        <div class="card text-center col-md-8 col-sm-12 py-4">
           <h1>Menu</h1>
           <hr class="mb-4" />
           <!--            d-flex card-deck flex-row row-->
@@ -149,7 +145,7 @@
               th:each="menuItem : ${listMenuItems}"
             >
               <div
-                class="card proj-menu-card"
+                class="card-menu card proj-menu-card"
                 data-toggle="modal"
                 th:data-target="${'#exampleModal'+menuItem.id}"
               >
@@ -231,9 +227,14 @@
             </div>
           </div>
         </div>
-        <div class="card-1 card col-md-4 col-sm-12 py-4 px-4">
+        <div class="card col-md-4 col-sm-12 py-4 px-4">
           <h1>Order</h1>
           <hr class="mb-4" />
+          <div th:if="${cart.total}==0">
+            <br />
+            <br />
+            <p class="text-black-50">Add items to get started</p>
+          </div>
           <table id="cart-table" class="table">
             <tbody>
               <tr th:each="cartItem : ${cart.cartItemList}">
@@ -245,19 +246,20 @@
                   $10.00
                 </td>
               </tr>
-              <tr>
+
+              <tr th:unless="${cart.subTotal}==0">
                 <td></td>
                 <td class="text-right">Subtotal:</td>
                 <td class="text-right" th:text="${cart.subTotalDisplay}">
                   $100.00
                 </td>
               </tr>
-              <tr>
+              <tr th:unless="${cart.tax}==0">
                 <td></td>
                 <td class="text-right">Tax:</td>
                 <td class="text-right" th:text="${cart.taxDisplay}">$8.00</td>
               </tr>
-              <tr>
+              <tr th:unless="${cart.total}==0">
                 <td></td>
                 <td class="text-right">Total:</td>
                 <td class="text-right" th:text="${cart.totalDisplay}">
@@ -268,6 +270,7 @@
           </table>
 
           <form
+            th:unless="${cart.total}==0"
             name="orderForm"
             class="form-card"
             action="checkout.html"
@@ -286,12 +289,5 @@
         </div>
       </div>
     </div>
-    <br />
-    <div id="feedback"></div>
-    <script
-      type="text/javascript"
-      src="../static/script/order.js"
-      th:src="@{script/order.js}"
-    ></script>
   </body>
 </html>
