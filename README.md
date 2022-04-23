@@ -9,7 +9,7 @@ information, so it can be used and extended to any type of products.
 
 ## Contents
 
-- [Case Study Rubrics](https://docs.google.com/document/d/1vX3oHn2rudg7hKWhudUCl5nQ-k447fwGf1XPg2YYBh0/edit)
+- [Case Study Rubrics](https://docs.google.com/document/d/1vX3oHn2rudg7hKWhudUCl5nQ-k447fwGf1XPg2YYBh0/edit)  -- Please contact [Supamas Sirichotiyakul](mailto:supamas.sirichotiyakul@gmail.com) to access this file
 - [Daily Progress](#daily-progress)
 - [User Stories](#user-stories)
   - [User](#user)
