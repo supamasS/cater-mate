@@ -1,9 +1,7 @@
 package org.supamassirichotiyakul.catermate.service;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +15,6 @@ import java.util.List;
 public class OrderServiceImplTest {
     @Autowired
     private OrderService orderService;
-
-//    @DisplayName("Parameterized test using JUnit 5 assert")
 
     @Test
     @Transactional

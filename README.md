@@ -23,6 +23,11 @@ information, so it can be used and extended to any type of products.
 - [Future Improvements](#future-improvements)
 
 ## Daily Progress
+- April 23rd (96% done)
+  - Fixed a bug in order_submitted.html that didn't show the image.
+  - Removed save cart in the controller method for "/order" so that a new cart is saved to the database only
+    after an item has been added to the cart.
+  
 - April 22nd (95% done)
   - Added Description, Technical Architecture, Technical Challenges, Lessons Learned, Future Improvements
   - Cleaned up CSS

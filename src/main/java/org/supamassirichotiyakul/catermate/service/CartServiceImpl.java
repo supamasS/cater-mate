@@ -56,7 +56,5 @@ public class CartServiceImpl implements CartService {
         cart.addCartItemToCart(cartItem);
 
         cartItemService.saveCartItem(cartItem);
-
-//        cartRepository.save(cart);
     }
 }

@@ -38,13 +38,6 @@ public class OrderController {
         return "view_orders";
     }
 
-//    @PostMapping("/saveOrder")
-//    public String save(@ModelAttribute("order") Order order) {
-//        // save order to database
-//        orderService.saveOrder(order);
-//        return "redirect:/order";
-//    }
-
     @GetMapping("/showOrderFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
         // get order from the service
@@ -67,18 +60,9 @@ public class OrderController {
     @GetMapping("/order")
     public String doOrder(Model model) {
         Cart cart = new Cart();
-        cartService.saveCart(cart); // need to save to create a new id
-
-//        Logger logger = LoggerFactory.getLogger(OrderController.class);
-//
-//        logger.trace("A TRACE Message");
-//        logger.debug("A DEBUG Message");
-//        logger.info("An INFO Message");
-//        logger.warn("A WARN Message");
-//        logger.error("An ERROR Message");
+        model.addAttribute("cart", cart);
 
         model.addAttribute("listMenuItems", menuItemService.getAllMenuItems());
-        model.addAttribute("cart", cart);
 
         return "order";
     }
@@ -86,8 +70,8 @@ public class OrderController {
     @GetMapping("/checkout/{cart_id}")
     public String doCheckOut(@PathVariable(value="cart_id") long cartId, Model model) {
         Cart cart = cartService.getCartById(cartId);
-
         model.addAttribute("cart", cart);
+
         model.addAttribute("itemList", cart.getCartItemList());
 
         Order order = new Order();
@@ -100,17 +84,14 @@ public class OrderController {
     public String doOrderSubmitted(
             @RequestParam(name="cart_id") int cartId,
             @ModelAttribute("order") Order order) {
+
         Cart cart = cartService.getCartById(cartId);
-
         orderService.copyInfoFromCart(order, cart);
-
         orderService.saveOrder(order);
 
         Logger logger = LoggerFactory.getLogger(OrderController.class);
-
         logger.info("Order for " + order.getCustomerFirstName() + " "
-                    + order.getCustomerLastName()
-                    + " has been submitted");
+                    + order.getCustomerLastName() + " has been submitted");
 
         return "order_submitted";
     }

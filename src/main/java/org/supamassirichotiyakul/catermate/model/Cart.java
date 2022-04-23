@@ -1,6 +1,5 @@
 package org.supamassirichotiyakul.catermate.model;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +14,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
-    @OneToMany(
-//            mappedBy = "cart",
-            targetEntity = CartItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @OneToMany(targetEntity = CartItem.class, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<CartItem> cartItemList;
 
     @Transient
@@ -37,8 +30,6 @@ public class Cart {
     private double total;
 
     public Cart() {
-        // need to set the user properly
-//        userId = 2;
         currentItemQuantity = 1;
         cartItemList = new ArrayList<>();
     }
@@ -50,14 +41,6 @@ public class Cart {
     public void setId(long id) {
         this.id = id;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public int getCurrentItemQuantity() {
         return currentItemQuantity;
@@ -116,7 +99,6 @@ public class Cart {
     }
 
     public void addCartItemToCart(CartItem cartItem) {
-//        cartItem.setCart(this);
         cartItem.setQuantity(this.getCurrentItemQuantity());
         this.getCartItemList().add(cartItem);
         this.setCurrentItemQuantity(1);
