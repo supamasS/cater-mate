@@ -24,6 +24,7 @@ information, so it can be used and extended to any type of products.
 
 ## Daily Progress
 - April 23rd (96% done)
+  - Added more lessons learned related to Thymeleaf.
   - Fixed a bug in order_submitted.html that didn't show the image.
   - Removed save cart in the controller method for "/order" so that a new cart is saved to the database only
     after an item has been added to the cart.
@@ -154,17 +155,19 @@ information, so it can be used and extended to any type of products.
   - The solution was to send the cart back as a model but send the menu item id with the path variable, then query 
     the database for the menu item in order to get name & price.
   
-
 - The original design was to have the order and checkout pages combined in one page but things become too complicated in
   a single page with @PostMapping required both for adding an item to the cart (which is saved to the database in case
   the cart gets abandoned) and submitting customer information. 
   - The solution was to split them out into 2 pages which made the implementation much easier to understand.
 
 ## Lessons Learned
-- Defining the project scope that is small enough to accomplish in the given time frame is critical to success.
+- Thymeleaf was new to me, and I assumed things work a certain way with the model attributes, but it was not
+  correct. Because of that I spent a large amount of time debugging and experimenting on things, I should have tried
+  to find a good resource to learn and really understand Thymeleaf more thoroughly first.
+- Defining the project scope that is small enough to accomplish in the given time frame is critical.
 - Project management and setting priorities and daily goals using a tool like Jira was very helpful.
-- Making decisions quick and getting implementation done early then having time to go back to improve things was 
-  a lot better than taking a long time to try to make a perfect decision and running short on time.
+- Making decisions early and getting implementation done early then having time to go back to improve things was 
+  a lot better than taking a long time to try to make a perfect decision and running short on time closer to the deadline.
 
 ## Future Improvements
 - Add functionality for an admin to create, read, update, delete the following:
