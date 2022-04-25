@@ -24,6 +24,7 @@ information, so it can be modified to be used with any type of products.
 
 ## Daily Progress
 - April 24th (97% done)
+  - Removed KITCHEN from navbar.
   - Fixed test issues with isTrue().
   - Rearranged files into packages according to models.
   - Added JavaDoc to CartItemServiceImpl.getNewCartItemFromMenuItem() method.
