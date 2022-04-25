@@ -23,6 +23,9 @@ information, so it can be used and extended to any type of products.
 - [Future Improvements](#future-improvements)
 
 ## Daily Progress
+- April 24th (97% done)
+  - Added tests for custom queries at repository level.
+  
 - April 23rd (96% done)
   - Added more lessons learned related to Thymeleaf.
   - Fixed a bug in order_submitted.html that didn't show the image.
@@ -85,6 +88,9 @@ information, so it can be used and extended to any type of products.
 - April 12th (70% done)
   - add Spring security login from class example - still need to style registration.html page
     and merge the old User class and related code to the example User class
+  
+
+## User Stories
 
 ### Login
 
@@ -104,8 +110,6 @@ information, so it can be used and extended to any type of products.
   - Tasks:
     1. Same as for admin login a-e
     2. If login is successful, show the screen for ordering.
-
-## User Stories
 
 ### User
 
