@@ -1,19 +1,19 @@
 ## Food catering application
 
-This app is intended to be used in house by a catering business owner and a few users that work for the owner, for
-the purpose of keeping track of the orders placed by the customer and also having the information available for
-the kitchen workers to view and make food to fulfill the order on the promised date and time.
+Cater Mate is a web-based application intended to be used in house by a catering business owner and 
+a few users that work for the owner, to keep track of the orders placed by the customers and also to have the information 
+available for the kitchen workers to view and make food to fulfill the order on the promised date and time.
 
-The design of this app is very similar to a general shopping app with products, shopping carts, orders, and customer
-information, so it can be used and extended to any type of products.
+The design of this app is very similar to a general shopping app having products, shopping carts, orders, and customer
+information, so it can be modified to be used with any type of products.
 
 ## Contents
 
 - [Case Study Rubrics](https://docs.google.com/document/d/1vX3oHn2rudg7hKWhudUCl5nQ-k447fwGf1XPg2YYBh0/edit)  -- Please contact [Supamas Sirichotiyakul](mailto:supamas.sirichotiyakul@gmail.com) to access this file
 - [Daily Progress](#daily-progress)
 - [User Stories](#user-stories)
-  - [User](#user)
   - [Admin](#admin)
+  - [User](#user)
 - [Technical Architecture](doc/Cater%20Mate%20Technical%20Architecture.pdf)
 - [Wire Frame]()
 - [Schema Diagram](Sirichotiyakul_Supamas_Schema.pdf)
@@ -102,7 +102,7 @@ information, so it can be used and extended to any type of products.
 
 ## User Stories
 
-### Login
+### Admin
 
 - As an admin, I want to log in with an admin privilege so that I can edit the list of items in the menu, update
   the price, etc.
@@ -115,31 +115,7 @@ information, so it can be used and extended to any type of products.
     5. Assign the privilege to the current user login session
     6. If login is successful, show the main screen with options according to login privilege.
   - Question: How to encrypt the password?
-
-- As a user, I want to log in with a user privilege so that I can do basic operations like entering a customer's order.
-  - Tasks:
-    1. Same as for admin login a-e
-    2. If login is successful, show the screen for ordering.
-
-### User
-
-- As a user, I want to add each item in the order, with the name and quantity.
-
-- As a user, I want to check out and add customer information after desired items have been added to the cart.
-
-- As a user, I want to see the total amount as I add each item so that I can tell the customer if needed.
-
-- As a user, I want to query the orders that need to be filled for a specific day so that I can give the information
-  to the people who work in the kitchen.
-
-#### Not implemented in this version
-
-- As a user, I want to have the kitchen pick sheet automatically created after I place an order.
-
-- As a user, I want to create an invoice as a pdf file so that I can send it to the customer.
-
-### Admin
-
+  
 - As an admin, I want to create a new menu item so that it's available on the menu.
 
 - As an admin, I want to view all the items on the menu listed with the price.
@@ -161,6 +137,32 @@ information, so it can be used and extended to any type of products.
 - As an admin, I want to edit an ingredient so that I can keep it up to date.
 
 - As an admin, I want to delete an ingredient so that it is removed from the list.
+
+
+### User
+
+- As a user, I want to log in with a user privilege so that I can do basic operations like entering a customer's order.
+  - Tasks:
+    1. Same as for admin login a-e
+    2. If login is successful, show the screen for ordering.
+    
+- As a user, I want to add each item in the order, with the name and quantity.
+
+- As a user, I want to check out and add customer information after desired items have been added to the cart.
+
+- As a user, I want to see the total amount as I add each item so that I can tell the customer if needed.
+
+- As a user, I want to query the orders that need to be filled for a specific day so that I can give the information
+  to the people who work in the kitchen.
+
+- As a user, I want to create an invoice from the order in pdf format.
+
+#### Not implemented in this version
+
+- As a user, I want to have the kitchen pick sheet automatically created after I place an order.
+
+- As a user, I want to create an invoice as a pdf file so that I can send it to the customer.
+
 
 ## Technical Challenges
 - Thymeleaf can only return a single object with the form submission 
@@ -201,9 +203,6 @@ information, so it can be used and extended to any type of products.
   - address
   - phone number
   - credit card information
-- Add invoice-related functionality:
-  - create an invoice in pdf format
-  - email an invoice to the customer
 - List menu item with associated total quantity ordered so that the business owner knows which menu items are popular.
 
 
