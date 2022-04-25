@@ -42,6 +42,13 @@ public class CartItemServiceImpl implements CartItemService {
         cartItemRepository.deleteById(id);
     }
 
+    /**
+     * Returns a CartItem object that has the following information copied from the input MenuItem object:
+     *      id, name, price
+     *
+     * @param menuItem a MenuItem object whose information to be copied from
+     * @return         a CartItem object containing menuItem's id, name, and price.
+     */
     @Override
     public CartItem getNewCartItemFromMenuItem(MenuItem menuItem) {
         CartItem cartItem = new CartItem();

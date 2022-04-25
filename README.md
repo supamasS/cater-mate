@@ -24,23 +24,28 @@ information, so it can be used and extended to any type of products.
 
 ## Daily Progress
 - April 24th (97% done)
+  - Added Javadoc to CartItemServiceImpl.getNewCartItemFromMenuItem() method.
   - Added tests for custom queries at repository level.
   
+
 - April 23rd (96% done)
   - Added more lessons learned related to Thymeleaf.
   - Fixed a bug in order_submitted.html that didn't show the image.
   - Removed save cart in the controller method for "/order" so that a new cart is saved to the database only
     after an item has been added to the cart.
   
+
 - April 22nd (95% done)
   - Added Description, Technical Architecture, Technical Challenges, Lessons Learned, Future Improvements
   - Cleaned up CSS
   - Added lambda expressions in the main CaterMateApplication class.
   
+
 - April 21st (92% done)
   - Updated README.md to link to Schema.pdf.
   - Created schema for the project in Schema.png file.
   
+
 - April 20th (92% done)
   - Added parameterized test for CartServiceImplTest
   - Added OrderServiceImplTest
@@ -51,24 +56,26 @@ information, so it can be used and extended to any type of products.
   - Removed cart reference from CartItem class
   - Fixed update user functionality bug
 
+
 - April 19th (90% done)
   - Added Logger and log messages to controller classes.
   - Added JavaDoc folder and JavaDoc files.
   
+
 - April 18th (87% done)
   - Added OrderRestController to provide web services.
   - Updated README.md file to have links and Contents section.
   - Created Schema.mwb file from SQL Server database.
   - Made Order -> OrderItem relationship uni-directional instead of bi-directional.
   
-- April 16th (85% done)
 
+- April 16th (85% done)
   - styled the order search boxes so they align properly
   - rename things to match the requirements
   - changed permissions so anyone can view orders but only ADMIN and SUPERADMIN can edit or delete.
 
-- April 15th (80% done)
 
+- April 15th (80% done)
   - Added ADMIN, SUPERADMIN roles and have permission set for "/users" as accessible by SUPERADMIN and "/menu" and
     "/viewOrders" are for ADMIN & SUPERADMIN
   - Addressed role assignment with:
@@ -79,11 +86,12 @@ information, so it can be used and extended to any type of products.
     together)
   - TODO: style 3 search boxes so they align
 
-- April 14th (75% done)
 
+- April 14th (75% done)
   - created a MenuItemServiceImpl bean using @Bean annotation (to satisfy a Capstone requirement)
   - finished styling registration page
   - merged the old User class to Spring security login User class
+
 
 - April 12th (70% done)
   - add Spring security login from class example - still need to style registration.html page
@@ -159,6 +167,7 @@ information, so it can be used and extended to any type of products.
   - The solution was to send the cart back as a model but send the menu item id with the path variable, then query 
     the database for the menu item in order to get name & price.
   
+
 - The original design was to have the order and checkout pages combined in one page but things become too complicated in
   a single page with @PostMapping required both for adding an item to the cart (which is saved to the database in case
   the cart gets abandoned) and submitting customer information. 
@@ -168,13 +177,19 @@ information, so it can be used and extended to any type of products.
 - Thymeleaf was new to me, and I assumed things work a certain way with the model attributes, but it was not
   correct. Because of that I spent a large amount of time debugging and experimenting on things, I should have tried
   to find a good resource to learn and really understand Thymeleaf more thoroughly first.
+
+
 - Defining the project scope that is small enough to accomplish in the given time frame is critical.
-- Project management and setting priorities and daily goals using a tool like Jira was very helpful.
-- Making decisions early and getting implementation done early then having time to go back to improve things was 
+
+
+- Making decisions early and getting implementation done early then having time to go back to improve things was
   a lot better than taking a long time to try to make a perfect decision and running short on time closer to the deadline.
 
+
+- Project management and setting priorities and daily goals using a tool like Jira was very helpful.
+
 ## Future Improvements
-- Add functionality for an admin to create, read, update, delete the following:
+- Add functionality for an admin to create, read, update, delete:
   - ingredients 
   - list of ingredients with associated amount for each menu item. 
   - a kitchen pick sheet after the order is submitted
