@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.supamassirichotiyakul.catermate.exception.UserNotFoundException;
+import org.supamassirichotiyakul.catermate.user.UserNotFoundException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Collection;

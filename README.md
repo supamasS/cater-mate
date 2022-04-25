@@ -24,7 +24,9 @@ information, so it can be used and extended to any type of products.
 
 ## Daily Progress
 - April 24th (97% done)
-  - Added Javadoc to CartItemServiceImpl.getNewCartItemFromMenuItem() method.
+  - Fixed test issues with isTrue().
+  - Rearranged files into packages according to models.
+  - Added JavaDoc to CartItemServiceImpl.getNewCartItemFromMenuItem() method.
   - Added tests for custom queries at repository level.
   
 

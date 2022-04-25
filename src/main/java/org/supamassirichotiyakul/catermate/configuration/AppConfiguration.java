@@ -3,9 +3,9 @@ package org.supamassirichotiyakul.catermate.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.supamassirichotiyakul.catermate.repository.MenuItemRepository;
-import org.supamassirichotiyakul.catermate.service.MenuItemService;
-import org.supamassirichotiyakul.catermate.service.MenuItemServiceImpl;
+import org.supamassirichotiyakul.catermate.menuitem.MenuItemRepository;
+import org.supamassirichotiyakul.catermate.menuitem.MenuItemService;
+import org.supamassirichotiyakul.catermate.menuitem.MenuItemServiceImpl;
 
 @Configuration
 public class AppConfiguration {
