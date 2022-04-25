@@ -25,6 +25,20 @@
       href="../static/css/styles.css"
       th:href="@{/css/styles.css}"
     />
+    <style>
+      .btn-block:focus,
+      .btn-block:hover,
+      .btn-block:visited {
+        background-color: #24798a;
+      }
+
+      .btn.btn-primary:active:hover,
+      .btn.btn-primary:hover,
+      .btn.btn-primary:focus {
+        border-color: #24798a;
+        background-color: #24798a;
+      }
+    </style>
   </head>
 
   <body>
@@ -97,7 +111,7 @@
 
             <div class="form-group col-6">
               <label for="price" class="form-control-label">Price</label>
-              <input
+              <input id="price"
                 type="text"
                 th:field="*{price}"
                 placeholder="Price"
