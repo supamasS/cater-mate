@@ -1,5 +1,7 @@
 package org.supamassirichotiyakul.catermate.cart;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.supamassirichotiyakul.catermate.cartitem.CartItem;
 import org.supamassirichotiyakul.catermate.menuitem.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +57,8 @@ public class CartServiceImpl implements CartService {
         cart.addCartItemToCart(cartItem);
 
         cartItemService.saveCartItem(cartItem);
+
+        Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
+        logger.info("CartServiceImpl: Menu item with id " + menuItemId + " has been added to cart with id " + cart.getId());
     }
 }

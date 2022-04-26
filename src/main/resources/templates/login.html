@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-<!--    From Sang-->
+    <!--    From Sang-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!--    -->
+    <!--    -->
 
     <link
       rel="stylesheet"
@@ -86,21 +86,20 @@
         class="card"
         src="../static/img/tacos.jpeg"
         th:src="@{img/tacos.jpeg}"
-        style="border-radius: 5px 0px 0px 5px;"
+        style="border-radius: 5px 0px 0px 5px"
       />
-      <div class="card" style="border-radius: 0px 5px 5px 0px;"
-      >
+      <div class="card" style="border-radius: 0px 5px 5px 0px">
         <form
           class="form-signin"
           id="form"
           action="order.html"
-          th:action="@{/login}" method="POST"
+          th:action="@{/login}"
+          method="POST"
         >
-
           <h2 class="mb-5">Sign In</h2>
           <div class="form-group">
-<!--          <label class="form-control-label" for="username">Email:</label>-->
-<!--          <div class="form-floating">-->
+            <!--          <label class="form-control-label" for="username">Email:</label>-->
+            <!--          <div class="form-floating">-->
             <input
               type="text"
               class="form-control"
@@ -112,8 +111,8 @@
             />
           </div>
           <div class="form-group">
-          <!--          <div class="form-floating">-->
-<!--            <label class="form-control-label" for="password">Password:</label>-->
+            <!--          <div class="form-floating">-->
+            <!--            <label class="form-control-label" for="password">Password:</label>-->
             <input
               type="password"
               class="form-control"
@@ -132,13 +131,19 @@
           </button>
           <br />
           <div class="form-group">
-                 <span>New user? <a class="color-accent" href="registration.html" th:href="@{/registration}">Register
-                       here</a></span>
+            <span
+              >New user?
+              <a
+                class="color-accent"
+                href="registration.html"
+                th:href="@{/registration}"
+                >Register here</a
+              ></span
+            >
           </div>
 
           <div th:if="${param.error}">
-            <div class="alert alert-danger">Invalid username or
-              password.</div>
+            <div class="alert alert-danger">Invalid username or password.</div>
           </div>
           <!--          <div th:if="${param.logout}">-->
           <!--            <div class="alert alert-info">You have been logged out.</div>-->

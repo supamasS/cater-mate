@@ -25,64 +25,77 @@
       th:href="@{/css/styles.css}"
     />
     <style>
-      .card-menu {
-        padding: 20px 10px 10px 10px;
-        margin-top: 0px;
-        margin-bottom: 60px;
-        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-      }
+            .card-menu {
+              padding: 20px 10px 10px 10px;
+              margin-top: 0px;
+              margin-bottom: 60px;
+              box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+            }
 
-      .form-control-label {
-        margin-bottom: 0;
-      }
+            .form-control-label {
+              margin-bottom: 0;
+            }
 
-      input,
-      textarea,
-      button {
-        padding: 8px 15px;
-        border-radius: 5px !important;
-        margin: 5px 0px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        font-size: 18px !important;
-        font-weight: 300;
-      }
+            input,
+            textarea,
+            button {
+              padding: 8px 15px;
+              border-radius: 5px !important;
+              margin: 5px 0px;
+              box-sizing: border-box;
+              border: 1px solid #ccc;
+              font-size: 18px !important;
+              font-weight: 300;
+            }
 
-      input:focus,
-      textarea:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        border: 1px solid #00bcd4;
-        outline-width: 0;
-        font-weight: 400;
-      }
+            input:focus,
+            textarea:focus {
+              -moz-box-shadow: none !important;
+              -webkit-box-shadow: none !important;
+              box-shadow: none !important;
+              border: 1px solid #00bcd4;
+              outline-width: 0;
+              font-weight: 400;
+            }
 
-      select {
-        margin: 5px 0px;
-        padding: 8px 15px;
-      }
+            select {
+              margin: 5px 0px;
+              padding: 8px 15px;
+            }
 
-      .btn-block:hover {
-        color: #fff !important;
-        background-color: #24798a;
-      }
+      <!--      .btn-block:hover {-->
+      <!--        color: #fff !important;-->
+      <!--        background-color: #24798a;-->
+      <!--      }-->
 
-      button:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        outline-width: 0;
-      }
+            button:focus {
+              -moz-box-shadow: none !important;
+              -webkit-box-shadow: none !important;
+              box-shadow: none !important;
+              outline-width: 0;
+            }
 
-      .card-title {
-        color: #35afc8;
-      }
+            .btn-block:focus,
+            .btn-block:hover,
+            .btn-block:visited {
+              background-color: #24798a;
+            }
 
-      .card-footer {
-        background-color: white;
-        padding: 0.75rem 0 0 0;
-      }
+            .btn.btn-primary:active:hover,
+            .btn.btn-primary:hover,
+            .btn.btn-primary:focus {
+              border-color: #24798a;
+              background-color: #24798a;
+            }
+
+            .card-title {
+              color: #35afc8;
+            }
+
+            .card-footer {
+              background-color: white;
+              padding: 0.75rem 0 0 0;
+            }
     </style>
 
     <title>Cater Mate Order</title>
@@ -90,7 +103,7 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <a class="text-white navbar-brand ml-3" href="#">CATER MATE</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -119,7 +132,7 @@
             th:href="@{/viewOrders}"
             >View Orders</a
           >
-<!--          <a class="nav-item nav-link" href="#">Kitchen</a>-->
+          <!--          <a class="nav-item nav-link" href="#">Kitchen</a>-->
           <a class="nav-item nav-link" href="index.html" th:href="@{/logout}"
             >Logout</a
           >
@@ -135,7 +148,7 @@
       <div class="card-deck mx-5">
         <!--        <div class="text-center"> style="width: 80vw" -->
         <div class="card text-center col-md-8 col-sm-12 py-4">
-          <h1>Menu</h1>
+          <h2>Menu</h2>
           <hr class="mb-4" />
           <!--            d-flex card-deck flex-row row-->
           <!-- Button trigger modal -->
@@ -228,7 +241,7 @@
           </div>
         </div>
         <div class="card col-md-4 col-sm-12 py-4 px-4">
-          <h1>Order</h1>
+          <h2>Cart</h2>
           <hr class="mb-4" />
           <div th:if="${cart.total}==0">
             <br />
